@@ -28,8 +28,6 @@ exports.crearUsuario = (req, res, next) => {
                     const user = new User({
                         name: newName,
                         email: newEmail,
-                        adress: newAdress,
-                        phone: newPhone,
                         password: hashedPassword
                     });
                     return user.save();

@@ -8,6 +8,8 @@ const userController = require('../controller/users');
 
 const contactsController = require('../controller/contacts');
 
+const regionController = require('../controller/regions');
+
 router.post('/login', userController.loginUsuario);
 
 router.post('/usuario', userController.crearUsuario);
@@ -23,5 +25,11 @@ router.get('/contactos', authController.userOk, contactsController.getContact);
 router.post('/contactos', authController.userOk, authController.adminVerification, contactsController.updateContact);
 
 router.delete('/contactos', authController.userOk, authController.adminVerification, contactsController.deleteContact);
+
+router.get('/contactos', authController.userOk, contactsController.getContactByRegion);
+
+router.post('/region', authController.userOk, authController.adminVerification, regionController.postNewRegion);
+
+router.post('/country', authController.userOk, authController.adminVerification, regionController.postNewCountry);
 
 module.exports = router;
