@@ -17,6 +17,7 @@ const Region = require('./models/region');
 const Country = require('./models/country');
 const City = require('./models/city');
 const Contact = require('./models/contact');
+const Company = require('./models/company');
 
 dotenv.config();
 
@@ -32,6 +33,8 @@ Contact.belongsTo(User, {
     onDelete: 'CASCADE'
 });
 User.hasMany(Contact);
+Contact.belongsTo(Company);
+//Company.belongsTo(City);
 Contact.belongsTo(City);
 City.belongsTo(Country);
 Country.belongsTo(Region);
@@ -39,8 +42,8 @@ Country.belongsTo(Region);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    //.sync({ force: true })
-    .sync()
+    .sync({ force: true })
+    //.sync()
     .then(result => {
         app.listen(process.env.APP_PORT, () => {
             console.log('Server initializated on port: ' + process.env.APP_PORT);
