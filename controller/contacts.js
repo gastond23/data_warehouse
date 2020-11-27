@@ -8,11 +8,15 @@ exports.postNewContact = (req, res, next) => {
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
     const newImg = req.body.img;
+    const newCompany = req.body.companyId;
+    const newCity = req.body.cityId;
     req.user.createContact({
             name: newName,
             email: newEmail,
             phone: newPhone,
-            img: newImg
+            img: newImg,
+            companyId: newCompany,
+            cityId:newCity
         })
         .then(data => {
             res.status(200).json({
@@ -67,12 +71,16 @@ exports.updateContact = (req, res, next) => {
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
     const newImg = req.body.img;
+    const newCompany = parseInt(req.body.companyId);
+    const newCity = parseInt(req.body.cityId);
     Contact.findByPk(contactId)
         .then(contact => {
             contact.name = newName;
             contact.email = newEmail;
             contact.phone = newPhone;
             contact.img = newImg;
+            contact.companyId = newCompany;
+            contact.cityId = newCity;
             contact.save();
             res.status(200).json({
                 msg: 'Datos Actualizados',
@@ -108,7 +116,9 @@ exports.deleteContact = (req, res, next) => {
 exports.getContactByRegion = (req, res, next) => {
     const regionId = req.body.regionId;
     Contact.findAll({
-            where: regionId
+            where: {
+                regionId: regionId
+            }
         })
         .then(data => {
             res.status(200).json({

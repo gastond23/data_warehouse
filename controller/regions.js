@@ -43,3 +43,24 @@ exports.postNewCountry = (req, res, next) => {
             })
         })
 }
+
+exports.postNewCity = (req, res, next) => {
+    const countryId = parseInt(req.body.countryId);
+    const cityName = req.body.cityName;
+    City.create({
+            name: cityName,
+            countryId: countryId
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Ciudad creada',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err
+            })
+        })
+}

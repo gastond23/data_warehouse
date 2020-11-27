@@ -32,4 +32,6 @@ router.post('/region', authController.userOk, authController.adminVerification, 
 
 router.post('/country', authController.userOk, authController.adminVerification, regionController.postNewCountry);
 
+router.post('/city', authController.userOk, authController.adminVerification, regionController.postNewCity);
+
 module.exports = router;
