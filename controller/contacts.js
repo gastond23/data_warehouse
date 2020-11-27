@@ -104,3 +104,7 @@ exports.deleteContact = (req, res, next) => {
             });
         })
 }
+
+exports.getContactByRegion = (req, res, next) => {
+    
+}
