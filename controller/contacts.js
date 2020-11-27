@@ -106,5 +106,20 @@ exports.deleteContact = (req, res, next) => {
 }
 
 exports.getContactByRegion = (req, res, next) => {
-    
+    const regionId = req.body.regionId;
+    Contact.findAll({
+            where: regionId
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Contactos por región',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID erróneo o región inexistente',
+                error: err
+            });
+        })
 }
