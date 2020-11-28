@@ -16,7 +16,7 @@ exports.postNewContact = (req, res, next) => {
             phone: newPhone,
             img: newImg,
             companyId: newCompany,
-            cityId:newCity
+            cityId: newCity
         })
         .then(data => {
             res.status(200).json({
@@ -113,7 +113,7 @@ exports.deleteContact = (req, res, next) => {
         })
 }
 
-exports.getContactByRegion = (req, res, next) => {
+exports.getContactsByRegion = (req, res, next) => {
     const regionId = req.body.regionId;
     Contact.findAll({
             where: {
@@ -129,6 +129,66 @@ exports.getContactByRegion = (req, res, next) => {
         .catch(err => {
             res.status(400).json({
                 msg: 'ID erróneo o región inexistente',
+                error: err
+            });
+        })
+}
+
+exports.getContactsByCompany = (req, res, next) => {
+    const companyId = req.body.companyId;
+    Contact.findAll({
+            where: {
+                companyId: companyId
+            }
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Contactos por companía',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json('ID erróneo o compania inexistente.')
+        })
+}
+
+exports.getContactsByCity = (req, res, next) => {
+    const cityId = req.body.cityId;
+    Contact.findAll({
+            where: {
+                cityId: cityId
+            }
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Contactos por ciudad',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID erróneo o ciudad inexistente',
+                error: err
+            });
+        })
+}
+
+exports.getContactsByCountry = (req, res, next) => {
+    const countryId = req.body.countryId;
+    Contact.findAll({
+            where: {
+                countryId: countryId
+            }
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Contactos por pais',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID erróneo o pais inexistente',
                 error: err
             });
         })
