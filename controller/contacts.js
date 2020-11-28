@@ -48,6 +48,7 @@ exports.getAllContacts = (req, res, next) => {
         })
 }
 
+
 exports.getContact = (req, res, next) => {
     const contactId = req.body.id;
     Contact.findByPk(contactId)
