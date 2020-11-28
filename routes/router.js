@@ -26,7 +26,7 @@ router.post('/contactos', authController.userOk, authController.adminVerificatio
 
 router.delete('/contactos', authController.userOk, authController.adminVerification, contactsController.deleteContact);
 
-router.get('/contactos', authController.userOk, contactsController.getContactByRegion);
+router.get('/contactos', authController.userOk, contactsController.getContactsByRegion);
 
 router.post('/region', authController.userOk, authController.adminVerification, regionController.postNewRegion);
 

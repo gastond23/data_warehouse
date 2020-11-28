@@ -39,7 +39,9 @@ Contact.belongsTo(User, {
 });
 User.hasMany(Contact);
 Contact.belongsTo(Company);
-//Company.belongsTo(City);
+Company.belongsTo(City);
+Company.belongsTo(Country);
+Company.belongsTo(Region);
 Contact.belongsTo(City);
 Contact.belongsTo(Country);
 Contact.belongsTo(Region);
@@ -49,7 +51,9 @@ Country.belongsTo(Region);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    .sync({ force: true })
+    .sync({
+        force: true
+    })
     //.sync()
     .then(result => {
         app.listen(process.env.APP_PORT, () => {

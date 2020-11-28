@@ -10,6 +10,7 @@ const Contact = sequelize.define('contact', {
         primaryKey: true
     },
     name: Sequelize.STRING,
+    lastname: Sequelize.STRING,
     email: Sequelize.STRING,
     phone: Sequelize.STRING,
     img: Sequelize.STRING

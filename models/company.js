@@ -9,7 +9,10 @@ const Company = sequelize.define('company', {
         allowNull: true,
         primaryKey: true
     },
-    name: Sequelize.STRING
+    name: Sequelize.STRING,
+    adress: Sequelize.STRING,
+    email: Sequelize.STRING,
+    phone: Sequelize.STRING
 })
 
 module.exports = Company;
