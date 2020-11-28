@@ -1,8 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 header .navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,7 +8,9 @@ header .navbar {
           justify-content: space-between;
   -ms-flex-line-pack: center;
       align-content: center;
-  background-color: #0072BC;
+  background-color: #1D72C2;
+  width: 100%;
+  height: 64px;
 }
 
 header .navbar .menu {
@@ -20,7 +18,7 @@ header .navbar .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 300px;
+  width: 180px;
   height: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -35,10 +33,143 @@ header .navbar .menu {
 
 header .navbar .menu .item-menu {
   list-style: none;
+  display: block;
+  height: 100%;
 }
 
-header .navbar .menu .item-menu a {
+header .navbar .menu .item-menu .menu-link {
+  display: block;
+  height: 71%;
+  -webkit-box-shadow: border-box;
+          box-shadow: border-box;
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+
+header .navbar .menu .item-menu .menu-link:hover {
+  color: #1CC1F5;
+}
+
+header .navbar .menu .item-menu .active {
+  font-weight: bold;
+  border-bottom: 3px solid #FFFFFF;
+}
+
+header .navbar .menu .item-menu .active:hover {
+  color: #FFFFFF;
+}
+
+header .navbar .logo {
+  display: block;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 60%;
+  width: 7em;
+  margin-left: 2em;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .login-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 450px;
+  width: 450px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.5);
+}
+
+main .login-section h1 {
+  font-size: 32px;
+  color: #1D72C2;
+  display: block;
+}
+
+main .login-section .login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 65%;
+}
+
+main .login-section .login-form label {
+  text-align: left;
+  width: 45%;
+}
+
+main .login-section .login-form .msg-help {
+  display: block;
+  color: #DE0028;
+  font-size: 12px;
+  visibility: hidden;
+}
+
+main .login-section .login-form input {
+  height: 36px;
+  width: 190px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+}
+
+main .login-section .login-form input:invalid {
+  border: 1px solid #DE0028;
+}
+
+main .login-section .login-form button {
+  display: block;
+  height: 45px;
+  width: 175px;
+  border-radius: 2px;
+  background-color: #1D72C2;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 /*# sourceMappingURL=index.css.map */

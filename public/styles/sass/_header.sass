@@ -4,16 +4,37 @@ header
         justify-content: space-between
         align-content: center
         background-color: $blue
+        width: 100%
+        height: 64px
         .menu
             margin: 1em
             display: flex
-            width: 300px
+            width: 180px
             height: 100%
             flex-direction: row
             justify-content: space-between
             align-content: center
             .item-menu
                 list-style: none
-                a
+                display: block
+                height: 100%
+                .menu-link
+                    display: block
+                    height: 71%
+                    box-shadow: border-box
                     text-decoration: none
-                    color: #ffffff
+                    color: $white
+                    transition: color 0.4s
+                .menu-link:hover
+                    color: $cyan
+                .active
+                    font-weight: bold
+                    border-bottom: 3px solid $white
+                .active:hover
+                    color: $white
+        .logo
+            display: block
+            align-self: center
+            height: 60%
+            width: 7em
+            margin-left: 2em
