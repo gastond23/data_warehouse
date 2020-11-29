@@ -234,10 +234,22 @@ main .active .login-form .btn-login {
 }
 
 .active .signup-form input {
+  margin: auto;
   height: 36px;
   width: 190px;
   border: 1px solid #E8E8E8;
   border-radius: 5px;
+}
+
+.active .signup-form .msg-help {
+  display: block;
+  color: #DE0028;
+  font-size: 12px;
+  visibility: hidden;
+}
+
+.active .signup-form .visible-msg {
+  visibility: visible;
 }
 
 .active .signup-form input:invalid {

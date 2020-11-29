@@ -11,7 +11,9 @@ const {
 
 exports.crearUsuario = (req, res, next) => {
     const newName = req.body.name;
+    const newLastName = req.body.lastname;
     const newEmail = req.body.email;
+    const newAdmin = req.body.perfil;
     const newPassword = req.body.password;
     User.findOne({
             where: {
@@ -27,7 +29,9 @@ exports.crearUsuario = (req, res, next) => {
                 .then(hashedPassword => {
                     const user = new User({
                         name: newName,
+                        lastname: newLastName,
                         email: newEmail,
+                        admin: newAdmin,
                         password: hashedPassword
                     });
                     return user.save();

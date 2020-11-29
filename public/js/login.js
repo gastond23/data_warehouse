@@ -1,11 +1,10 @@
 let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-let url = "http://localhost:3000/login";
-
 let msgError = document.getElementsByClassName('msg-help');
 
 function loginFunction() {
+    let url = "http://localhost:3000/login";
     let urlencoded = new URLSearchParams();
     urlencoded.append("email", document.getElementById('email_login').value);
     urlencoded.append("password", document.getElementById('pass_login').value);

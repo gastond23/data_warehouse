@@ -36,17 +36,23 @@
             <form id="sign_up_form" class="signup-form">
                 <label for="nombre_signup">Nombre:</label>
                 <input type="text" name="name" id="nombre_signup">
+                <small class="msg-help">Este campo es obligatorio.</small>
                 <label for="apellido_signup">Apellido:</label>
                 <input type="text" name="lastname" id="apellido_signup">
+                <small class="msg-help">Este campo es obligatorio.</small>
                 <label for="email_signup">Email:</label>
                 <input type="text" name="email" id="email_signup">
+                <small class="msg-help">Este campo es obligatorio.</small>
                 <label for="perfil_signup">Perfil:</label>
-                <input type="text" name="admin" id="perfil_signup">
+                <input type="text" name="admin" id="perfil_signup" placeholder="Admin / User">
+                <small class="msg-help">Este campo es obligatorio.</small>
                 <label for="pass_signup">Contraseña:</label>
                 <input type="password" name="password" id="pass_signup">
+                <small class="msg-help">Debe contener minimo 8 caracteres</small>
                 <label for="repeat_pass">Repetir contraseña:</label>
                 <input type="password" name="rep-pass" id="repeat_pass">
-                <button class="btn-signup" type="submit">Crear</button>
+                <small class="msg-help">La contraseña no coincide.</small>
+                <button class="btn-signup" type="button" onclick="signUpFunction()">Crear</button>
             </form>
         </section>
     </main>
