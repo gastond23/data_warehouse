@@ -12,14 +12,14 @@
     <header>
         <nav class="navbar">
             <img class="logo" src="./public/img/logo.png" alt="logo" />
-            <ul class="menu">
-                <li class="item-menu"><a class="menu-link active" href="index.html">Login</a></li>
-                <li class="item-menu"><a class="menu-link" href="#">Crear Usuario</a></li>
+            <ul class="menu" id="menu">
+                <li class="item-menu"><a id="login_link" class="menu-link active" href="index.html">Login</a></li>
+                <li class="item-menu"><a id="signup_link" class="menu-link" href="#">Crear Usuario</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="login-section">
+        <section class="login-section active">
             <h1>Bienvenido</h1>
             <form id="login_form" class="login-form">
                 <label for="email_login">Usuario:</label>
@@ -33,23 +33,24 @@
         </section>
         <section class="signup-section">
             <h1>Creá tu usuario:</h1>
-            <form id="sign_up_form">
+            <form id="sign_up_form" class="signup-form">
                 <label for="nombre_signup">Nombre:</label>
-                <input type="text" name="name" id="nombre_signup" required>
+                <input type="text" name="name" id="nombre_signup">
                 <label for="apellido_signup">Apellido:</label>
-                <input type="text" name="lastname" id="apellido_signup" required>
+                <input type="text" name="lastname" id="apellido_signup">
                 <label for="email_signup">Email:</label>
-                <input type="text" name="email" id="email_signup" required>
+                <input type="text" name="email" id="email_signup">
                 <label for="perfil_signup">Perfil:</label>
-                <input type="text" name="admin" id="perfil_signup" required>
+                <input type="text" name="admin" id="perfil_signup">
                 <label for="pass_signup">Contraseña:</label>
-                <input type="password" name="password" id="pass_signup" required>
+                <input type="password" name="password" id="pass_signup">
                 <label for="repeat_pass">Repetir contraseña:</label>
-                <input type="password" name="rep-pass" id="repeat_pass" required>
-                <button type="submit">Crear</button>
+                <input type="password" name="rep-pass" id="repeat_pass">
+                <button class="btn-signup" type="submit">Crear</button>
             </form>
         </section>
     </main>
+    <script src="./public/js/index.js"></script>
     <script src="./public/js/login.js"></script>
     <script src="./public/js/signup.js"></script>
 </body>

@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 header .navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -90,9 +96,7 @@ main {
 }
 
 main .login-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -108,13 +112,19 @@ main .login-section {
           box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.5);
 }
 
-main .login-section h1 {
+main .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .active h1 {
   font-size: 32px;
   color: #1D72C2;
   display: block;
 }
 
-main .login-section .login-form {
+main .active .login-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -132,34 +142,34 @@ main .login-section .login-form {
   height: 65%;
 }
 
-main .login-section .login-form label {
+main .active .login-form label {
   text-align: left;
   width: 45%;
 }
 
-main .login-section .login-form .msg-help {
+main .active .login-form .msg-help {
   display: block;
   color: #DE0028;
   font-size: 12px;
   visibility: hidden;
 }
 
-main .login-section .login-form .visible-msg {
+main .active .login-form .visible-msg {
   visibility: visible;
 }
 
-main .login-section .login-form input {
+main .active .login-form input {
   height: 36px;
   width: 190px;
   border: 1px solid #E8E8E8;
   border-radius: 5px;
 }
 
-main .login-section .login-form input:invalid {
+main .active .login-form input:invalid {
   border: 1px solid #DE0028;
 }
 
-main .login-section .login-form .btn-login {
+main .active .login-form .btn-login {
   display: block;
   height: 45px;
   width: 175px;
@@ -171,9 +181,79 @@ main .login-section .login-form .btn-login {
   cursor: pointer;
 }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  padding: 0;
+.signup-section {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 650px;
+  width: 550px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.5);
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.active h1 {
+  font-size: 32px;
+  color: #1D72C2;
+  display: block;
+}
+
+.active .signup-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 75%;
+}
+
+.active .signup-form label {
+  text-align: left;
+  width: 35%;
+}
+
+.active .signup-form input {
+  height: 36px;
+  width: 190px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+}
+
+.active .signup-form input:invalid {
+  border: 1px solid #DE0028;
+}
+
+.active .signup-form .btn-signup {
+  display: block;
+  height: 45px;
+  width: 175px;
+  border-radius: 2px;
+  background-color: #1D72C2;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 2em;
 }
 /*# sourceMappingURL=index.css.map */
