@@ -4,6 +4,7 @@ myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 let msgError = document.getElementsByClassName('msg-help');
 
 function loginFunction() {
+    debugger;
     let url = "http://localhost:3000/login";
     let urlencoded = new URLSearchParams();
     urlencoded.append("email", document.getElementById('email_login').value);

@@ -5,6 +5,7 @@ let email = document.getElementById('email_signup');
 let perfil = document.getElementById('perfil_signup');
 let passOne = document.getElementById('pass_signup');
 let passTwo = document.getElementById('repeat_pass');
+let overlaySignUp = document.getElementsByClassName('overlay-signup');
 
 
 function signUpFunction() {
@@ -26,7 +27,7 @@ function signUpFunction() {
         msgError[5].classList.add('visible-msg');
         statusForm = false;
     }
-    if (perfil.value == 'admin'|| perfil.value == 'Admin') {
+    if (perfil.value == 'admin' || perfil.value == 'Admin') {
         perfil.value = 1;
     } else {
         perfil.value = 0;
@@ -59,7 +60,20 @@ function signUpFunction() {
 
         fetch(url, requestOptions)
             .then(response => response.json())
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result);
+                overlaySignUp[0].classList.add('over-active');
+                setTimeout(overlayFunc, 3000);
+            })
             .catch(error => console.log('error', error))
     }
+}
+
+function overlayFunc() {
+    overlaySignUp[0].classList.remove('over-active');
+    statusIni = true;
+    signUpLink.classList.remove('active');
+    signUpSection[0].classList.remove('active');
+    loginLink.classList.add('active');
+    loginSection[0].classList.add('active');
 }
