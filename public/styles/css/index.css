@@ -144,6 +144,10 @@ main .login-section .login-form .msg-help {
   visibility: hidden;
 }
 
+main .login-section .login-form .visible-msg {
+  visibility: visible;
+}
+
 main .login-section .login-form input {
   height: 36px;
   width: 190px;
@@ -155,7 +159,7 @@ main .login-section .login-form input:invalid {
   border: 1px solid #DE0028;
 }
 
-main .login-section .login-form button {
+main .login-section .login-form .btn-login {
   display: block;
   height: 45px;
   width: 175px;

@@ -6,6 +6,8 @@ const app = express();
 
 const dotenv = require('dotenv');
 
+const cors = require('cors');
+
 //Importar base de datos para inicialización y asociaciones
 
 const sequelize = require('./data/database');
@@ -29,6 +31,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(cors());
+
 app.use(router);
 
 //Asociaciones en base de datos
@@ -51,10 +55,8 @@ Country.belongsTo(Region);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    .sync({
-        force: true
-    })
-    //.sync()
+    //.sync({ force: true})
+    .sync()
     .then(result => {
         app.listen(process.env.APP_PORT, () => {
             console.log('Server initializated on port: ' + process.env.APP_PORT);
