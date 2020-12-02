@@ -10,6 +10,12 @@ const contactsController = require('../controller/contacts');
 
 const regionController = require('../controller/regions');
 
+router.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Login YPF'
+    });
+})
+
 router.post('/login', userController.loginUsuario);
 
 router.post('/usuario', userController.crearUsuario);

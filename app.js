@@ -8,6 +8,13 @@ const dotenv = require('dotenv');
 
 const cors = require('cors');
 
+const ejs = require('ejs');
+
+const path = require('path');
+
+const ejsLint = require('ejs-lint');
+
+
 //Importar base de datos para inicialización y asociaciones
 
 const sequelize = require('./data/database');
@@ -26,6 +33,13 @@ const Contact = require('./models/contact');
 const Company = require('./models/company');
 
 dotenv.config();
+
+app.use(express.static('public'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
     extended: true
