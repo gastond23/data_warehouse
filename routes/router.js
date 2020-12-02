@@ -16,6 +16,12 @@ router.get('/', (req, res) => {
     });
 })
 
+router.get('/signup', (req, res) => {
+    res.render('signup', {
+        title: 'Sign Up YPF'
+    })
+})
+
 router.post('/login', userController.loginUsuario);
 
 router.post('/usuario', userController.crearUsuario);
