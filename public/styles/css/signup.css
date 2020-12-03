@@ -15,6 +15,7 @@
           flex-direction: column;
   width: 100%;
   height: 80vh;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .main-signup .form-title {

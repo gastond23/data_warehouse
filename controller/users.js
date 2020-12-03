@@ -24,7 +24,8 @@ exports.crearUsuario = (req, res, next) => {
             if (usuario) {
                 return res.status(400).send({
                     msg: 'Email existente!',
-                    user: usuario
+                    user: usuario,
+                    status: 400
                 });
             } else {
                 return bcrypt
@@ -44,13 +45,15 @@ exports.crearUsuario = (req, res, next) => {
         .then(data => {
             return res.status(200).send({
                 msg: 'Usuario creado!',
-                user: data
+                user: data,
+                status: 200
             });
         })
         .catch(err => {
             return res.status(400).send({
                 msg: 'Ocurrio un error, intente nuevamente',
-                data: err
+                data: err,
+                status: 400
             });
         })
 }

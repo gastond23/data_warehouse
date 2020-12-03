@@ -96,19 +96,27 @@ signUpBtn.addEventListener('click', (e) => {
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
-            if (data.status = 400) {
+            SignUpData = data;
+            if (SignUpData.status == 400) {
                 overlaySignUp[1].classList.add('active');
-                msgTitleError.innerText = data.msg;
-                console.log(data);
-                SignUpData = data;
+                msgTitleError.innerText = SignUpData.msg;
             } else {
                 overlaySignUp[0].classList.add('active');
-                msgTitleOk.innerText = data.msg;
-                console.log(data);
-                SignUpData = data;
+                msgTitleOk.innerText = SignUpData.msg;
             }
+            setTimeout(overlaySignUpMsg, 3000);
         })
         .catch(err => {
             console.log(err);
         })
 });
+
+function overlaySignUpMsg() {
+    if (SignUpData.status == 400) {
+        overlaySignUp[1].classList.remove('active');
+    } else {
+        overlaySignUp[0].classList.remove('active');
+        window.location.href = 'http://localhost:3000/';
+    }
+
+}
