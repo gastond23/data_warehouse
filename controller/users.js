@@ -22,29 +22,36 @@ exports.crearUsuario = (req, res, next) => {
         })
         .then(usuario => {
             if (usuario) {
-                return res.status(400).send('Email existente!');
+                return res.status(400).send({
+                    msg: 'Email existente!',
+                    user: usuario
+                });
+            } else {
+                return bcrypt
+                    .hash(newPassword, 12)
+                    .then(hashedPassword => {
+                        const user = new User({
+                            name: newName,
+                            lastname: newLastName,
+                            email: newEmail,
+                            admin: newAdmin,
+                            password: hashedPassword
+                        });
+                        return user.save();
+                    })
             }
-            return bcrypt
-                .hash(newPassword, 12)
-                .then(hashedPassword => {
-                    const user = new User({
-                        name: newName,
-                        lastname: newLastName,
-                        email: newEmail,
-                        admin: newAdmin,
-                        password: hashedPassword
-                    });
-                    return user.save();
-                })
         })
         .then(data => {
-            res.status(200).send({
+            return res.status(200).send({
                 msg: 'Usuario creado!',
                 user: data
             });
         })
         .catch(err => {
-            console.log(err);
+            return res.status(400).send({
+                msg: 'Ocurrio un error, intente nuevamente',
+                data: err
+            });
         })
 }
 
@@ -87,10 +94,13 @@ exports.loginUsuario = (req, res, next) => {
 
 exports.verUsers = (req, res, next) => {
     User.findAll()
-    .then(data => {
-        return res.status(200).json({msg: 'GET Usuarios Ok!', usuarios: data});
-    })
-    .catch(err => {
-        return res.status(400).send('Error 404, no existen usuarios.');
-    })
+        .then(data => {
+            return res.status(200).json({
+                msg: 'GET Usuarios Ok!',
+                usuarios: data
+            });
+        })
+        .catch(err => {
+            return res.status(400).send('Error 404, no existen usuarios.');
+        })
 }

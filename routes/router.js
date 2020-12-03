@@ -14,13 +14,13 @@ router.get('/', (req, res) => {
     res.render('index', {
         title: 'Login YPF'
     });
-})
+});
 
 router.get('/signup', (req, res) => {
     res.render('signup', {
         title: 'Sign Up YPF'
     })
-})
+});
 
 router.post('/login', userController.loginUsuario);
 

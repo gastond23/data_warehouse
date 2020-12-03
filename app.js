@@ -69,10 +69,8 @@ Country.belongsTo(Region);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    .sync({
-        force: true
-    })
-    //.sync()
+    //.sync({force: true})
+    .sync()
     .then(result => {
         app.listen(process.env.APP_PORT, () => {
             console.log('Server initializated on port: ' + process.env.APP_PORT);
