@@ -3,18 +3,20 @@ myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
 let msgError = document.getElementsByClassName('msg-help');
 
-function loginFunction() {
+let btnLogin = document.getElementById('btn-login');
+
+btnLogin.addEventListener('click', (e) => {
     debugger;
+    e.preventDefault();
     let url = "http://localhost:3000/login";
     let urlencoded = new URLSearchParams();
-    urlencoded.append("email", document.getElementById('email_login').value);
-    urlencoded.append("password", document.getElementById('pass_login').value);
+    urlencoded.append("email", document.getElementById('exampleInputEmail1').value);
+    urlencoded.append("password", document.getElementById('inputPassword6').value);
 
     let requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: urlencoded,
-        redirect: 'follow'
     };
 
     fetch(url, requestOptions)
@@ -24,8 +26,8 @@ function loginFunction() {
             const token = JSON.stringify(data);
             document.cookie = `access_token=${token}`;
         })
-        .catch(error => {
-            msgError[0].classList.add('visible-msg');
-            msgError[1].classList.add('visible-msg');
+        .catch(err => {
+            document.getElementById('exampleInputEmail1').classList.add('is-invalid');
+            document.getElementById('inputPassword6').classList.add('is-invalid');
         });
-}
+})
