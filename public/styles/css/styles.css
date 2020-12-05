@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+.navbar-nav .nav-item .nav-link {
+  display: block;
+  height: 118%;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+  border-bottom: 4px solid #ffffff;
+}
+/*# sourceMappingURL=styles.css.map */

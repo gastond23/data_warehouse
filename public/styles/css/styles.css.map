@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,mFAAI;ACAZ,AAEQ,WAFG,CACP,SAAS,CACL,SAAS,CAAC;EACN,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,IAAI;CAE6B;;AANrD,AAKY,WALD,CACP,SAAS,CACL,SAAS,AAGJ,OAAO,CAAC;EACL,aAAa,EAAE,iBAAiB;CAAG",
+    "sources": [
+        "../sass/styles.sass",
+        "../sass/_navbar.sass",
+        "../sass/_contacts.sass"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

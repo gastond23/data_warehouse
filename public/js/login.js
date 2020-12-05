@@ -6,7 +6,6 @@ let msgError = document.getElementsByClassName('msg-help');
 let btnLogin = document.getElementById('btn-login');
 
 btnLogin.addEventListener('click', (e) => {
-    debugger;
     e.preventDefault();
     let url = "http://localhost:3000/login";
     let urlencoded = new URLSearchParams();
@@ -22,9 +21,10 @@ btnLogin.addEventListener('click', (e) => {
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {
-            let data = result.token;
-            const token = JSON.stringify(data);
-            document.cookie = `access_token=${token}`;
+            let token = result.token;
+            document.cookie = "access_token=" + encodeURIComponent(token);
+            window.location.href = 'http://localhost:3000/contacts';
+
         })
         .catch(err => {
             document.getElementById('exampleInputEmail1').classList.add('is-invalid');
