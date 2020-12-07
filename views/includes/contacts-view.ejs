@@ -1,0 +1,31 @@
+<table id="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th> 
+            <th>Telefono</th>
+            <th>Img URL</th>
+            <th>Compania</th>
+            <th>Ciudad</th>
+            <th>Pais</th>
+            <th>Región</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let contacts of data) { %>
+        <tr>
+            <td><%= contacts.name %></td>
+            <td><%= contacts.lastname %></td>
+            <td><%= contacts.email %></td>
+            <td><%= contacts.phone %></td>
+            <td><%= contacts.lastname %></td>
+            <td><%= contacts.img %></td>
+            <td><%= contacts.companyId %></td>
+            <td><%= contacts.cityId %></td>
+            <td><%= contacts.countryId %></td>
+            <td><%= contacts.regionId %></td>
+        </tr>
+        <% }; %>
+    </tbody>
+</table>

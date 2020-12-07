@@ -1,3 +1,5 @@
+//Importar dependencias instaladas
+
 const express = require('express');
 
 const bodyParser = require('body-parser');
@@ -32,14 +34,17 @@ const City = require('./models/city');
 const Contact = require('./models/contact');
 const Company = require('./models/company');
 
+//Setear app y configuraciones
+
 dotenv.config();
 
 app.use(express.static('public'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -69,7 +74,7 @@ Country.belongsTo(Region);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    //.sync({force: true})
+    //.sync({ force: true })
     .sync()
     .then(result => {
         app.listen(process.env.APP_PORT, () => {

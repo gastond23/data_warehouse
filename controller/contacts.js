@@ -35,10 +35,9 @@ exports.postNewContact = (req, res, next) => {
 exports.getAllContacts = (req, res, next) => {
     Contact.findAll()
         .then(contacts => {
-            res.status(200).json({
-                msg: 'Lista contactos',
-                contacts: contacts
-            });
+            res.status(200).render('home', {
+                data: contacts
+            })
         })
         .catch(err => {
             res.status(400).json({
