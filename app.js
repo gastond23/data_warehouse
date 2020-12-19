@@ -63,11 +63,7 @@ Contact.belongsTo(User, {
 User.hasMany(Contact);
 Contact.belongsTo(Company);
 Company.belongsTo(City);
-Company.belongsTo(Country);
-Company.belongsTo(Region);
 Contact.belongsTo(City);
-Contact.belongsTo(Country);
-Contact.belongsTo(Region);
 City.belongsTo(Country);
 Country.belongsTo(Region);
 

@@ -1,10 +1,11 @@
 {
     "version": 3,
-    "mappings": "AAAA,OAAO,CAAC,mFAAI;ACAZ,AAEQ,WAFG,CACP,SAAS,CACL,SAAS,CAAC;EACN,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,IAAI;CAE6B;;AANrD,AAKY,WALD,CACP,SAAS,CACL,SAAS,AAGJ,OAAO,CAAC;EACL,aAAa,EAAE,iBAAiB;CAAG",
+    "mappings": "AAAA,OAAO,CAAC,mFAAI;ACAZ,AAEQ,WAFG,CACP,SAAS,CACL,SAAS,CAAC;EACN,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,IAAI;CAE6B;;AANrD,AAKY,WALD,CACP,SAAS,CACL,SAAS,AAGJ,OAAO,CAAC;EACL,aAAa,EAAE,iBAAiB;CAAG;;AENnD,AAAA,MAAM,CAAC;EACH,KAAK,EAAE,IAAI;EACX,WAAW,EHAC,WAAW,EAAE,YAAY;CGAP",
     "sources": [
         "../sass/styles.sass",
         "../sass/_navbar.sass",
-        "../sass/_contacts.sass"
+        "../sass/_contacts.sass",
+        "../sass/_tables.sass"
     ],
     "names": [],
     "file": "styles.css"

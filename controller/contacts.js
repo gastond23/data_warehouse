@@ -2,6 +2,10 @@ const {
     networkInterfaces
 } = require('os');
 const Contact = require('../models/contact');
+const Region = require('../models/region');
+const Contry = require('../models/country');
+const City = require('../models/city');
+const Country = require('../models/country');
 
 exports.postNewContact = (req, res, next) => {
     const newName = req.body.name;
@@ -33,9 +37,17 @@ exports.postNewContact = (req, res, next) => {
 }
 
 exports.getAllContacts = (req, res, next) => {
-    Contact.findAll()
+    Contact.findAll({
+            include: {
+                all: true,
+                nested: true
+            }
+        })
         .then(contacts => {
+            console.log(JSON.stringify(contacts, null, 2));
             res.status(200).render('home', {
+                title: 'Contactos',
+                msg: 'Contactos',
                 data: contacts
             })
         })

@@ -1,22 +1,19 @@
-var urlHost = 'http://localhost';
-var port = ':3000';
-var contactosPath = '/contactos';
 let dataContact;
+let url = 'http://localhost:3000/contactos';
 
-var myHeaders = new Headers();
+let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-var urlencoded = new URLSearchParams();
+let urlencoded = new URLSearchParams();
 
-var requestOptions = {
+let requestOptions = {
     method: 'GET',
-    headers: myHeaders,
-    //body: urlencoded,
-    redirect: 'follow'
+    headers: myHeaders
+    //body: urlencoded
 };
 
-fetch(urlHost + port + contactosPath, requestOptions)
+fetch(url, requestOptions)
     .then(response => response.json())
     .then(result => {
         dataContact = result;

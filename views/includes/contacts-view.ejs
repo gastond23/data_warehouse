@@ -19,12 +19,11 @@
             <td><%= contacts.lastname %></td>
             <td><%= contacts.email %></td>
             <td><%= contacts.phone %></td>
-            <td><%= contacts.lastname %></td>
             <td><%= contacts.img %></td>
-            <td><%= contacts.companyId %></td>
-            <td><%= contacts.cityId %></td>
-            <td><%= contacts.countryId %></td>
-            <td><%= contacts.regionId %></td>
+            <td><%= contacts.company.name %></td>
+            <td><%= contacts.city.name %></td>
+            <td><%= contacts.city.country.name %></td>
+            <td><%= contacts.city.country.region.name %></td>
         </tr>
         <% }; %>
     </tbody>

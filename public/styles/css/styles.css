@@ -7,4 +7,9 @@
 .navbar-nav .nav-item .nav-link.active {
   border-bottom: 4px solid #ffffff;
 }
+
+#table {
+  width: 100%;
+  font-family: "Open Sans", "sans-serif";
+}
 /*# sourceMappingURL=styles.css.map */

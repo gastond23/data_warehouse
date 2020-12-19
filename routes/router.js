@@ -24,6 +24,12 @@ router.get('/signup', (req, res) => {
     })
 });
 
+/* router.get('/contacts', (req, res) => {
+    res.render('home', {
+        title: 'Contactos'
+    })
+}) */
+
 
 //Router Controllers
 
@@ -33,7 +39,7 @@ router.post('/usuario', userController.crearUsuario);
 
 router.get('/usuario', authController.userOk, authController.adminVerification, userController.verUsers);
 
-router.get('/contacts', authController.userOk, contactsController.getAllContacts);
+router.get('/contactos', contactsController.getAllContacts);
 
 router.post('/contactos', authController.userOk, authController.adminVerification, contactsController.postNewContact);
 
