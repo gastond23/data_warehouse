@@ -1,15 +1,30 @@
 <%- include('includes/head') %>
 <link rel="stylesheet" href="/styles/css/styles.css">
+<% if (title == 'Region/Ciudad') { %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css">
+<% } %>
 <title><%= title %></title>
 </head>
 
 <body>
     <%- include('includes/header') %>
     <main>
+        <% if (title == 'Contactos') { %>
         <section class="contact-table">
-            <%- include('includes/contacts-view') %> 
+            <%- include('includes/contacts-view') %>
         </section>
+        <% } else if (title == 'Region/Ciudad') { %>
+        <section class="region-tree">
+            <%- include('includes/region-tree') %>
+        </section>
+        <% } %>
     </main>
-    <!-- <script src="/js/act.js"></script>
-    <script src="/js/contacts.js"></script> -->
+    <script src="/js/navbar.js"></script>
+    <script src="/js/act.js"></script>
+    <% if (title == 'Region/Ciudad') { %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <script src="/js/jstree.js"></script>
+    <% } %>
+    <!-- <script src="/js/contacts.js"></script> -->
     <%- include('includes/footer') %>

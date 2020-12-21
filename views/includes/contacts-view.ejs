@@ -1,11 +1,11 @@
 <table id="table">
     <thead>
         <tr>
+            <th>Avatar</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Email</th> 
+            <th>Email</th>
             <th>Telefono</th>
-            <th>Img URL</th>
             <th>Compania</th>
             <th>Ciudad</th>
             <th>Pais</th>
@@ -15,11 +15,11 @@
     <tbody>
         <% for (let contacts of data) { %>
         <tr>
+            <td class="avatar"><img src="<%= contacts.img %>" alt="Avatar"></td>
             <td><%= contacts.name %></td>
             <td><%= contacts.lastname %></td>
             <td><%= contacts.email %></td>
             <td><%= contacts.phone %></td>
-            <td><%= contacts.img %></td>
             <td><%= contacts.company.name %></td>
             <td><%= contacts.city.name %></td>
             <td><%= contacts.city.country.name %></td>

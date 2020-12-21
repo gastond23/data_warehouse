@@ -39,7 +39,7 @@ router.post('/usuario', userController.crearUsuario);
 
 router.get('/usuario', authController.userOk, authController.adminVerification, userController.verUsers);
 
-router.get('/contactos', contactsController.getAllContacts);
+router.get('/contactos', authController.userOk, contactsController.getAllContacts);
 
 router.post('/contactos', authController.userOk, authController.adminVerification, contactsController.postNewContact);
 
@@ -56,5 +56,7 @@ router.post('/region', authController.userOk, authController.adminVerification, 
 router.post('/country', authController.userOk, authController.adminVerification, regionController.postNewCountry);
 
 router.post('/city', authController.userOk, authController.adminVerification, regionController.postNewCity);
+
+router.get('/region_city', authController.userOk, regionController.allRegions);
 
 module.exports = router;

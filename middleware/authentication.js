@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 exports.userOk = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1];
+        const token = req.get('Cookie').split('=')[1];
         const tokenVerification = jwt.verify(token, firma);
         const userId = tokenVerification.userData.id
         if (tokenVerification) {

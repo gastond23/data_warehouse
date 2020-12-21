@@ -80,7 +80,11 @@ exports.loginUsuario = (req, res, next) => {
                         const token = jwt.sign({
                             userData
                         }, firma);
-                        return res.status(200).redirect('/contactos');
+                        return res.status(200).json({
+                            msg: 'Usuario logueado!',
+                            usuario: usuarioLog.dataValues.email,
+                            token: token
+                        });
                     } else {
                         return res.status(400).send('Contraseña incorrecta.');
                     }

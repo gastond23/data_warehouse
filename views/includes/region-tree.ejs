@@ -1,0 +1,20 @@
+<div id="jstree">
+    <ul> <% for (let region of data) { %>
+        <li>
+            <%= region.name %>
+            <ul>
+                <% for (let country of region.countries) { %>
+                <li><%= country.name %>
+                    <ul>
+                        <% for (let city of country.cities) {%>
+                        <li><%= city.name %></li>
+                        <% }; %>
+                    </ul>
+                </li>
+                <% }; %>
+            </ul>
+        </li>
+        <% }; %>
+    </ul>
+</div>
+<button>demo button</button>

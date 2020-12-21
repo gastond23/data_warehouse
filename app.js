@@ -64,7 +64,9 @@ User.hasMany(Contact);
 Contact.belongsTo(Company);
 Company.belongsTo(City);
 Contact.belongsTo(City);
+Country.hasMany(City);
 City.belongsTo(Country);
+Region.hasMany(Country);
 Country.belongsTo(Region);
 
 //Iniciando servidor esperando la configuración o inico de la base de datos

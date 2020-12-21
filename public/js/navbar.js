@@ -1,7 +1,7 @@
 //Declaración de las variables para controlar el menu
 let navLink = document.getElementsByClassName('nav-link');
 let linkLocation = window.location.pathname;
-let linkSignUpActive = ['/', '/signup', '/contactos', '/companies', '/users', 'region_city'];
+let linkSignUpActive = ['/', '/signup', '/contactos', '/companies', '/users', '/region_city'];
 let itemContainer = document.getElementsByClassName('navbar-nav')
 
 //Deshabilitar links

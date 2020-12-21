@@ -64,3 +64,25 @@ exports.postNewCity = (req, res, next) => {
             })
         })
 }
+
+exports.allRegions = (req, res, next) => {
+    Region.findAll({
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(data => {
+            console.log(JSON.stringify(data, null, 2));
+            res.status(200).render('home', {
+                title: 'Region/Ciudad',
+                data: data
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err
+            })
+        })
+}
