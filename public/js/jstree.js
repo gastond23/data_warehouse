@@ -1,9 +1,23 @@
+let espacio = " ";
+
+$('#jstree').jstree({
+    "core": {
+        "themes": {
+            "variant": "large"
+        }
+    },
+    "checkbox": {
+        "keep_selected_style": true
+    }
+});
+
 $(function () {
 
     $('#jstree').jstree();
 
     $('#jstree').on("changed.jstree", function (e, data) {
-        console.log(data.selected);
+        let searchId = data.selected[0].split(" ");
+        console.log(searchId);
     });
 
 

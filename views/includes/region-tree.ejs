@@ -1,13 +1,13 @@
-<div id="jstree">
+<div id="jstree" class="tree-container">
     <ul> <% for (let region of data) { %>
-        <li>
+        <li id="regionId <%= region.id %>" data-jstree='{"icon":"https://icons.getbootstrap.com/icons/globe.svg"}'>
             <%= region.name %>
             <ul>
                 <% for (let country of region.countries) { %>
-                <li><%= country.name %>
+                <li id="countryId <%= country.id %> " data-jstree='{"icon":"https://icons.getbootstrap.com/icons/flag-fill.svg"}'><%= country.name %>
                     <ul>
                         <% for (let city of country.cities) {%>
-                        <li><%= city.name %></li>
+                        <li id="cityId <%= city.id %>" data-jstree='{"icon":"https://icons.getbootstrap.com/icons/geo-alt.svg"}'><%= city.name %></li>
                         <% }; %>
                     </ul>
                 </li>
@@ -17,4 +17,3 @@
         <% }; %>
     </ul>
 </div>
-<button>demo button</button>
