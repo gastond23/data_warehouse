@@ -73,7 +73,7 @@ exports.allRegions = (req, res, next) => {
             }
         })
         .then(data => {
-            console.log(JSON.stringify(data, null, 2));
+            //console.log(JSON.stringify(data, null, 2));
             res.status(200).render('home', {
                 title: 'Region/Ciudad',
                 data: data

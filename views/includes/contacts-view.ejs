@@ -1,29 +1,36 @@
-<table id="table">
+<table id="table" class="table table-striped table-sm table-bordered">
     <thead>
         <tr>
-            <th>Avatar</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Compania</th>
-            <th>Ciudad</th>
-            <th>Pais</th>
-            <th>Región</th>
+            <th scope="col">Id</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Compania</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Región</th>
+            <th scope="col">Acción</th>
         </tr>
     </thead>
     <tbody>
         <% for (let contacts of data) { %>
         <tr>
-            <td class="avatar"><img src="<%= contacts.img %>" alt="Avatar"></td>
-            <td><%= contacts.name %></td>
-            <td><%= contacts.lastname %></td>
-            <td><%= contacts.email %></td>
-            <td><%= contacts.phone %></td>
-            <td><%= contacts.company.name %></td>
-            <td><%= contacts.city.name %></td>
-            <td><%= contacts.city.country.name %></td>
-            <td><%= contacts.city.country.region.name %></td>
+            <th scope="row" class="align-middle"><%= contacts.id %> </th>
+            <td class="avatar align-middle"><img src="<%= contacts.img %>" alt="Avatar"></td>
+            <td class="align-middle"><%= contacts.name %></td>
+            <td class="align-middle"><%= contacts.lastname %></td>
+            <td class="align-middle"><%= contacts.email %></td>
+            <td class="align-middle"><%= contacts.phone %></td>
+            <td class="align-middle"><%= contacts.company.name %></td>
+            <td class="align-middle"><%= contacts.city.name %></td>
+            <td class="align-middle"><%= contacts.city.country.name %></td>
+            <td class="align-middle"><%= contacts.city.country.region.name %></td>
+            <td class="align-middle">
+                <button type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
         </tr>
         <% }; %>
     </tbody>

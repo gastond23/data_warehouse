@@ -10,6 +10,8 @@ const contactsController = require('../controller/contacts');
 
 const regionController = require('../controller/regions');
 
+const companiesController = require('../controller/companies');
+
 //Router views
 
 router.get('/', (req, res) => {
@@ -18,7 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/users', authController.userOk, authController.adminVerification, (req, res) => {
     res.render('signup', {
         title: 'Sign Up YPF'
     })
@@ -35,7 +37,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/login', userController.loginUsuario);
 
-router.post('/usuario', userController.crearUsuario);
+router.post('/usuario', authController.userOk, authController.adminVerification, userController.crearUsuario);
 
 router.get('/usuario', authController.userOk, authController.adminVerification, userController.verUsers);
 
@@ -58,5 +60,7 @@ router.post('/country', authController.userOk, authController.adminVerification,
 router.post('/city', authController.userOk, authController.adminVerification, regionController.postNewCity);
 
 router.get('/region_city', authController.userOk, regionController.allRegions);
+
+router.get('/companies', authController.userOk, companiesController.getAllCompanies);
 
 module.exports = router;

@@ -77,6 +77,8 @@ signUpBtn.addEventListener('click', (e) => {
     let url;
     let urlencoded;
     if (perfil.value == 'on') {
+        perfil.value = 1;
+    } else {
         perfil.value = 0;
     }
     if (statusForm == true) {
@@ -116,7 +118,6 @@ function overlaySignUpMsg() {
         overlaySignUp[1].classList.remove('active');
     } else {
         overlaySignUp[0].classList.remove('active');
-        window.location.href = 'http://localhost:3000/';
     }
 
 }

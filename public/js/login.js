@@ -21,8 +21,11 @@ btnLogin.addEventListener('click', (e) => {
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {
+            console.log(result);
             let token = result.token;
+            let admin = result.admin;
             document.cookie = "access_token=" + encodeURIComponent(token);
+            document.cookie = "isAdmin=" + encodeURIComponent(admin);
             window.location.href = 'http://localhost:3000/contactos';
 
         })

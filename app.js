@@ -16,6 +16,8 @@ const path = require('path');
 
 const ejsLint = require('ejs-lint');
 
+const cookieParser = require('cookie-parser');
+
 
 //Importar base de datos para inicialización y asociaciones
 
@@ -49,6 +51,8 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(cookieParser());
 
 app.use(cors());
 

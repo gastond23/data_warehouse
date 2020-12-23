@@ -19,8 +19,39 @@
   border-radius: 40px;
 }
 
-.tree-container {
+.region-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: auto;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: auto;
+  padding-top: 1em;
+}
+
+.region-container .tree-container {
   font-family: "Open Sans", "sans-serif";
   font-size: 20px;
+  width: 100%;
+}
+
+.region-container .tree-container ul li {
+  display: block;
+  width: 100%;
+}
+
+.region-container .tree-container ul li .btn {
+  height: 25px;
+  text-align: center;
+  line-height: 0;
+  margin-left: 2em;
+  font-size: 10px;
+}
+
+.region-container .control-container {
+  margin-right: 1em;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,19 +1,37 @@
-<div id="jstree" class="tree-container">
-    <ul> <% for (let region of data) { %>
-        <li id="regionId <%= region.id %>" data-jstree='{"icon":"https://icons.getbootstrap.com/icons/globe.svg"}'>
-            <%= region.name %>
-            <ul>
-                <% for (let country of region.countries) { %>
-                <li id="countryId <%= country.id %> " data-jstree='{"icon":"https://icons.getbootstrap.com/icons/flag-fill.svg"}'><%= country.name %>
-                    <ul>
-                        <% for (let city of country.cities) {%>
-                        <li id="cityId <%= city.id %>" data-jstree='{"icon":"https://icons.getbootstrap.com/icons/geo-alt.svg"}'><%= city.name %></li>
-                        <% }; %>
-                    </ul>
-                </li>
-                <% }; %>
-            </ul>
-        </li>
-        <% }; %>
-    </ul>
+<div class="region-container">
+    <div id="jstree" class="tree-container">
+        <ul> <% for (let region of data) { %>
+            <li id="regionId <%= region.id %>" data-jstree='{"icon":"https://icons.getbootstrap.com/icons/globe.svg"}'>
+                <%= region.name %>
+                <button type="button" class="btn btn-primary btn-sm">Agregar País</button>
+                <ul>
+                    <% for (let country of region.countries) { %>
+                    <li id="countryId <%= country.id %>"
+                        data-jstree='{"icon":"https://icons.getbootstrap.com/icons/flag-fill.svg"}'><%= country.name %>
+                        <button type="button" class="btn btn-secondary btn-sm">Editar</button>
+                        <button type="button" class="btn btn-danger btn-sm">Borrar</button>
+                        <button type="button" class="btn btn-primary btn-sm">Agregar Ciudad</button>
+                        <ul>
+                            <% for (let city of country.cities) {%>
+                            <li id="cityId <%= city.id %>"
+                                data-jstree='{"icon":"https://icons.getbootstrap.com/icons/geo-alt.svg"}'>
+                                <%= city.name %>
+                                <button type="button" class="btn btn-secondary btn-sm">Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm">Borrar</button></li>
+                            <% }; %>
+                        </ul>
+                    </li>
+                    <% }; %>
+                </ul>
+            </li>
+            <% }; %>
+        </ul>
+    </div>
+    <div class="control-container">
+        <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1">Agregar Región</button>
+            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+        </div>
+    </div>
 </div>

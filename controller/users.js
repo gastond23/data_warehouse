@@ -83,7 +83,8 @@ exports.loginUsuario = (req, res, next) => {
                         return res.status(200).json({
                             msg: 'Usuario logueado!',
                             usuario: usuarioLog.dataValues.email,
-                            token: token
+                            token: token,
+                            admin: usuarioLog.dataValues.admin
                         });
                     } else {
                         return res.status(400).send('Contraseña incorrecta.');

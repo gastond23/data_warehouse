@@ -17,10 +17,14 @@
         <section class="region-tree">
             <%- include('includes/region-tree') %>
         </section>
+        <% } else if (title = 'Companías') {  %>
+        <section class="companies-table">
+            <%- include('includes/companies-view') %>
+        </section>
         <% } %>
     </main>
-    <script src="/js/navbar.js"></script>
     <script src="/js/act.js"></script>
+    <script src="/js/navbar.js"></script>
     <% if (title == 'Region/Ciudad') { %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
