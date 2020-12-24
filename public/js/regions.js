@@ -36,6 +36,10 @@ function createRegion() {
     }
 }
 
+function createCountry() {
+    
+}
+
 function overlayPopUpMsg() {
     if (data.status == 400) {
         msgPopUp.classList.remove('error');
