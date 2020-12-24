@@ -21,3 +21,38 @@
                     font-size: 10px
     .control-container
         margin-right: 1em
+
+.overlay-msg
+    display: none
+    flex-direction: column
+    position: absolute
+    right: 0
+    left: 0
+    top: 0
+    height: 120vh
+    width: 100%
+    background-color: rgba(232, 232, 232, 0.9)
+    margin: auto
+    z-index: 100
+    justify-content: center
+    align-items: center
+    font-family: $font-openSans
+    .msg-title
+        font-size: 30px
+        color: #0062ff
+    .fas
+        display: none
+
+.ok
+    display: flex
+    .fa-check
+        display: block
+        font-size: 45px
+        color: #00ff00
+
+.error
+    display: flex
+    .fa-times
+        display: block
+        font-size: 45px
+        color: #ff0000

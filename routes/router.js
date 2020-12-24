@@ -63,4 +63,16 @@ router.get('/region_city', authController.userOk, regionController.allRegions);
 
 router.get('/companies', authController.userOk, companiesController.getAllCompanies);
 
+router.delete('/region', authController.userOk, regionController.deleteRegion);
+
+router.put('/region', authController.userOk, regionController.updateRegion);
+
+router.delete('/country', authController.userOk, regionController.deleteCountry);
+
+router.put('/country', authController.userOk, regionController.updateCountry);
+
+router.delete('/city', authController.userOk, regionController.deleteCity);
+
+router.put('/city', authController.userOk, regionController.updateCity);
+
 module.exports = router;

@@ -96,4 +96,61 @@
 .region-container .control-container {
   margin-right: 1em;
 }
+
+.overlay-msg {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 120vh;
+  width: 100%;
+  background-color: rgba(232, 232, 232, 0.9);
+  margin: auto;
+  z-index: 100;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.overlay-msg .msg-title {
+  font-size: 30px;
+  color: #0062ff;
+}
+
+.overlay-msg .fas {
+  display: none;
+}
+
+.ok {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ok .fa-check {
+  display: block;
+  font-size: 45px;
+  color: #00ff00;
+}
+
+.error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.error .fa-times {
+  display: block;
+  font-size: 45px;
+  color: #ff0000;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -119,5 +119,4 @@ function overlaySignUpMsg() {
     } else {
         overlaySignUp[0].classList.remove('active');
     }
-
 }
