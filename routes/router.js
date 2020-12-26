@@ -75,4 +75,10 @@ router.delete('/city', authController.userOk, regionController.deleteCity);
 
 router.put('/city', authController.userOk, regionController.updateCity);
 
+router.get('/region', authController.userOk, regionController.allRegionsJSON);
+
+router.post('/countries', authController.userOk, regionController.getCountries);
+
+router.post('/cities', authController.userOk, regionController.getCities);
+
 module.exports = router;

@@ -186,4 +186,60 @@
   display: -ms-flexbox;
   display: flex;
 }
+
+.agregate-company-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vh;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.agregate-company-container h1 {
+  margin: 1em;
+}
+
+.agregate-company-container .btn-container {
+  margin-right: 1em;
+}
+
+.overlay-form {
+  font-family: "Open Sans", "sans-serif";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 120vh;
+  width: 100%;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(232, 232, 232, 0.9);
+}
+
+.overlay-form h2 {
+  margin-top: -5em;
+  margin-bottom: 2em;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=styles.css.map */
