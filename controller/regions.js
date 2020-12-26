@@ -33,7 +33,7 @@ exports.postNewCountry = (req, res, next) => {
         .then(data => {
             res.status(200).json({
                 msg: 'Pais creado',
-                region: data
+                data: data
             })
         })
         .catch(err => {

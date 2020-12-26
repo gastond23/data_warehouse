@@ -1,4 +1,5 @@
 let espacio = " ";
+let searchId;
 
 $('#jstree').jstree({
     "core": {
@@ -14,11 +15,6 @@ $('#jstree').jstree({
 $(function () {
 
     $('#jstree').jstree();
-
-    $('#jstree').on("changed.jstree", function (e, data) {
-        let searchId = data.selected[0].split(" ");
-        console.log(searchId);
-    });
 
 
     $('button').on('click', function () {
