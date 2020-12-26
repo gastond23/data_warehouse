@@ -263,6 +263,7 @@ function deleteCity(){
         fetch("http://localhost:3000/city", requestOptions)
             .then(response => response.json())
             .then(result => {
+                debugger;
                 data = result;
                 if (data.status == 400) {
                     msgPopUp.classList.add('error');
