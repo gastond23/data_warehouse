@@ -3,9 +3,19 @@ let overlayForm = document.getElementsByClassName('overlay-form');
 let selectRegion = document.getElementById('select-region');
 let selectCountry = document.getElementById('select-country');
 let selectCity = document.getElementById('select-city');
+let createCompanyBtn = document.getElementById('agregate_company_btn');
+let mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let inputName = document.getElementById('name');
+let inputAdress = document.getElementById('adress');
+let inputEmail = document.getElementById('email');
+let inputPhone = document.getElementById('phone');
+let formTitle = document.getElementById('form-title');
+
 let regions;
 let countries;
 let cities;
+let companyId = 0;
+let statusForm;
 
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
@@ -37,6 +47,8 @@ fetch("http://localhost:3000/region", requestOptions)
 
 btnActivateForm.addEventListener('click', () => {
     overlayForm[0].classList.add('active');
+    formTitle.innerText = 'Agregar Companía';
+    createCompanyBtn.innerText = 'Agregar Companía';
 })
 
 selectRegion.addEventListener('change', () => {
@@ -97,3 +109,109 @@ selectCountry.addEventListener('change', () => {
         })
         .catch(error => console.log('error', error));
 })
+
+inputName.addEventListener('keyup', () => {
+    if (inputName.value.length == 0) {
+        inputName.classList.add('is-invalid');
+        statusForm = false;
+    } else {
+        inputName.classList.remove('is-invalid');
+        inputName.classList.add('is-valid');
+        statusForm = true;
+    }
+})
+
+inputAdress.addEventListener('keyup', () => {
+    if (inputAdress.value.length == 0) {
+        inputAdress.classList.add('is-invalid');
+        statusForm = false;
+    } else {
+        inputAdress.classList.remove('is-invalid');
+        inputAdress.classList.add('is-valid');
+        statusForm = true;
+    }
+})
+
+inputEmail.addEventListener('keyup', () => {
+    if (!inputEmail.value.match(mailFormat)) {
+        inputEmail.classList.add('is-invalid');
+        statusForm = false;
+    } else {
+        inputEmail.classList.remove('is-invalid');
+        inputEmail.classList.add('is-valid');
+        statusForm = true;
+    }
+})
+
+inputPhone.addEventListener('keyup', () => {
+    if (inputPhone.value.length == 0) {
+        inputPhone.classList.add('is-invalid');
+        statusForm = false;
+    } else {
+        inputPhone.classList.remove('is-invalid');
+        inputPhone.classList.add('is-valid');
+        statusForm = true;
+    }
+})
+
+createCompanyBtn.addEventListener('click', () => {
+    if (statusForm == true) {
+        let urlencoded = new URLSearchParams();
+        urlencoded.append('name', inputName.value);
+        urlencoded.append('adress', inputAdress.value);
+        urlencoded.append('phone', inputPhone.value);
+        urlencoded.append('email', inputEmail.value);
+        urlencoded.append('cityId', selectCity.value);
+        if (companyId > 0) {
+            urlencoded.append('id', companyId);
+            requestOptions = {
+                method: 'PUT',
+                headers: myHeaders,
+                body: urlencoded
+            };
+        } else {
+            requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded
+            };
+        }
+        fetch("http://localhost:3000/companies", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                companyId = 0;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+})
+
+function editCompany(id) {
+    companyId = id;
+    overlayForm[0].classList.add('active');
+    formTitle.innerText = 'Editar Companía';
+    createCompanyBtn.innerText = 'Editar Companía';
+}
+
+function deleteCompany(id) {
+    companyId = id;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append('id', companyId);
+    requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: urlencoded
+    };
+    fetch("http://localhost:3000/companies", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            companyId = 0;
+            location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}

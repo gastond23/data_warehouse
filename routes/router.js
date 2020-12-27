@@ -63,6 +63,8 @@ router.get('/region_city', authController.userOk, regionController.allRegions);
 
 router.get('/companies', authController.userOk, companiesController.getAllCompanies);
 
+router.post('/companies', authController.userOk, companiesController.postNewCompany);
+
 router.delete('/region', authController.userOk, regionController.deleteRegion);
 
 router.put('/region', authController.userOk, regionController.updateRegion);
@@ -80,5 +82,9 @@ router.get('/region', authController.userOk, regionController.allRegionsJSON);
 router.post('/countries', authController.userOk, regionController.getCountries);
 
 router.post('/cities', authController.userOk, regionController.getCities);
+
+router.put('/companies', authController.userOk, companiesController.editCompany);
+
+router.delete('/companies', authController.userOk, companiesController.deleteCompany);
 
 module.exports = router;
