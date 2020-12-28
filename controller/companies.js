@@ -20,6 +20,26 @@ exports.getAllCompanies = async function (req, res, next) {
         });
 }
 
+exports.getAllCompaniesJson = async function (req, res, next) {
+    await Company.findAll({
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(data => {
+            //console.log(JSON.stringify(data, null, 2));
+            res.status(200).json({
+                msg: 'Companías',
+                data: data,
+                status: 200
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 exports.postNewCompany = (req, res, next) => {
     const name = req.body.name;
     const adress = req.body.adress;

@@ -11,9 +11,15 @@ const Contact = sequelize.define('contact', {
     },
     name: Sequelize.STRING,
     lastname: Sequelize.STRING,
-    email: Sequelize.STRING,
+    email: {
+        type: Sequelize.STRING,
+        unique: true
+    },
+    position: Sequelize.STRING,
     phone: Sequelize.STRING,
-    img: Sequelize.STRING
+    img: Sequelize.STRING,
+    interest: Sequelize.INTEGER,
+    adress: Sequelize.STRING
 });
 
 module.exports = Contact;

@@ -5,29 +5,37 @@ const Contact = require('../models/contact');
 
 exports.postNewContact = (req, res, next) => {
     const newName = req.body.name;
+    const newLastname = req.body.lastname;
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
     const newImg = req.body.img;
     const newCompany = req.body.companyId;
     const newCity = req.body.cityId;
+    const newPosition = req.body.position;
+    const newInterest = req.body.interest;
     req.user.createContact({
             name: newName,
+            lastname: newLastname,
             email: newEmail,
             phone: newPhone,
             img: newImg,
             companyId: newCompany,
-            cityId: newCity
+            cityId: newCity,
+            position: newPosition,
+            interest: newInterest
         })
         .then(data => {
             res.status(200).json({
                 msg: 'Contacto creado',
-                data: data
+                data: data,
+                status: 200
             });
         })
         .catch(err => {
             res.status(400).json({
                 msg: 'Ocurrió un error, intente mas tarde.',
-                error: err
+                data: err,
+                status: 400
             });
         })
 }
@@ -44,13 +52,16 @@ exports.getAllContacts = (req, res, next) => {
             res.status(200).render('home', {
                 title: 'Contactos',
                 msg: 'Contactos',
-                data: contacts
+                data: contacts,
+                status: 200
             })
         })
         .catch(err => {
-            res.status(400).json({
+            res.status(400).render('home', {
+                title: 'Contactos',
                 msg: 'Ocurrió un error, intente mas tarde.',
-                error: err
+                data: err,
+                status: 400
             });
         })
 }

@@ -18,6 +18,10 @@ const ejsLint = require('ejs-lint');
 
 const cookieParser = require('cookie-parser');
 
+const multer = require('multer');
+
+
+
 
 //Importar base de datos para inicialización y asociaciones
 
@@ -44,6 +48,10 @@ app.use(express.static('public'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(multer({
+    dest: path.join(__dirname, 'private/img')
+}).single('image'));
+
 app.set('view engine', 'ejs');
 
 app.set('views', 'views');
@@ -57,6 +65,16 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(router);
+
+app.post('/upload', (req, res) => {
+    const file = req.file;
+    const path = file.destination + '/' + file.filename;
+    res.status(200).render('form-contact', {
+        title: 'Crear Contacto',
+        path: path,
+        status: 200
+    })
+})
 
 //Asociaciones en base de datos
 

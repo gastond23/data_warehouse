@@ -11,7 +11,10 @@ const Company = sequelize.define('company', {
     },
     name: Sequelize.STRING,
     adress: Sequelize.STRING,
-    email: Sequelize.STRING,
+    email: {
+        type: Sequelize.STRING,
+        unique: true
+    },
     phone: Sequelize.STRING
 })
 
