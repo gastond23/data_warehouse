@@ -1,6 +1,3 @@
-const {
-    networkInterfaces
-} = require('os');
 const Contact = require('../models/contact');
 
 exports.postNewContact = (req, res, next) => {
@@ -8,7 +5,8 @@ exports.postNewContact = (req, res, next) => {
     const newLastname = req.body.lastname;
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
-    const newImg = req.body.img;
+    const newAdress = req.body.adress;
+    const newImg = req.file.filename;
     const newCompany = req.body.companyId;
     const newCity = req.body.cityId;
     const newPosition = req.body.position;
@@ -19,17 +17,14 @@ exports.postNewContact = (req, res, next) => {
             email: newEmail,
             phone: newPhone,
             img: newImg,
+            adress: newAdress,
             companyId: newCompany,
             cityId: newCity,
             position: newPosition,
             interest: newInterest
         })
         .then(data => {
-            res.status(200).json({
-                msg: 'Contacto creado',
-                data: data,
-                status: 200
-            });
+            res.status(200).redirect('http://localhost:3000/contactos')
         })
         .catch(err => {
             res.status(400).json({
@@ -48,7 +43,7 @@ exports.getAllContacts = (req, res, next) => {
             }
         })
         .then(contacts => {
-            //console.log(JSON.stringify(contacts, null, 2));
+            console.log(JSON.stringify(contacts, null, 2));
             res.status(200).render('home', {
                 title: 'Contactos',
                 msg: 'Contactos',
@@ -211,4 +206,11 @@ exports.getContactsByCountry = (req, res, next) => {
                 error: err
             });
         })
+}
+
+exports.contactCreateForm = (req, res, next) => {
+    res.status(200).render('form-contact', {
+        title: 'Crear Contacto',
+        msg: 'Form Create Contact'
+    })
 }

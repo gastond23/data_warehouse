@@ -18,8 +18,8 @@ const Contact = sequelize.define('contact', {
     position: Sequelize.STRING,
     phone: Sequelize.STRING,
     img: Sequelize.STRING,
-    interest: Sequelize.INTEGER,
-    adress: Sequelize.STRING
+    adress: Sequelize.STRING,
+    interest: Sequelize.INTEGER
 });
 
 module.exports = Contact;

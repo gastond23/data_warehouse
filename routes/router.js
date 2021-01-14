@@ -12,6 +12,8 @@ const regionController = require('../controller/regions');
 
 const companiesController = require('../controller/companies');
 
+const upload = require('../middleware/uploads');
+
 //Router views
 
 router.get('/', (req, res) => {
@@ -20,7 +22,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/users', authController.userOk, authController.adminVerification, (req, res) => {
+router.get('/users', (req, res) => {
     res.render('signup', {
         title: 'Sign Up YPF'
     })
@@ -31,6 +33,7 @@ router.get('/users', authController.userOk, authController.adminVerification, (r
         title: 'Contactos'
     })
 }) */
+
 
 
 //Router Controllers
@@ -52,6 +55,8 @@ router.post('/contactos', authController.userOk, authController.adminVerificatio
 router.delete('/contactos', authController.userOk, authController.adminVerification, contactsController.deleteContact);
 
 router.get('/contactos', authController.userOk, contactsController.getContactsByRegion);
+
+router.get('/form-contact', authController.userOk, contactsController.contactCreateForm);
 
 router.post('/region', authController.userOk, authController.adminVerification, regionController.postNewRegion);
 
@@ -87,6 +92,8 @@ router.post('/cities', authController.userOk, regionController.getCities);
 
 router.put('/companies', authController.userOk, companiesController.editCompany);
 
-router.delete('/companies', authController.userOk, companiesController.deleteCompany)
+router.delete('/companies', authController.userOk, companiesController.deleteCompany);
+
+router.post('/uploads', authController.userOk, authController.adminVerification, upload.single('img'), contactsController.postNewContact)
 
 module.exports = router;
