@@ -22,27 +22,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/users', (req, res) => {
-    res.render('signup', {
-        title: 'Sign Up YPF'
-    })
-});
-
-/* router.get('/contacts', (req, res) => {
-    res.render('home', {
-        title: 'Contactos'
-    })
-}) */
-
-
-
 //Router Controllers
 
 router.post('/login', userController.loginUsuario);
 
 router.post('/usuario', authController.userOk, authController.adminVerification, userController.crearUsuario);
 
-router.get('/usuario', authController.userOk, authController.adminVerification, userController.verUsers);
+router.get('/usuarios', authController.userOk, authController.adminVerification, userController.verUsers);
 
 router.get('/contactos', authController.userOk, contactsController.getAllContacts);
 

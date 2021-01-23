@@ -1,12 +1,18 @@
 const Contact = require('../models/contact');
 
 exports.postNewContact = (req, res, next) => {
+    console.log(req.file);
+    let newImg;
+    if (req.file == undefined) {
+        newImg = 'avatar.jpg';
+    } else {
+        newImg = req.file.filename;
+    }
     const newName = req.body.name;
     const newLastname = req.body.lastname;
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
     const newAdress = req.body.adress;
-    const newImg = req.file.filename;
     const newCompany = req.body.companyId;
     const newCity = req.body.cityId;
     const newPosition = req.body.position;

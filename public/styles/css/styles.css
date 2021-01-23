@@ -264,4 +264,66 @@
   display: -ms-flexbox;
   display: flex;
 }
+
+.main-signup {
+  top: 0;
+  display: none;
+  position: absolute;
+  margin: auto;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(232, 232, 232, 0.9);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.main-signup .form-title {
+  position: relative;
+  margin: auto;
+}
+
+.overlay-signup {
+  display: none;
+  position: absolute;
+  margin: auto;
+  height: 120vh;
+  width: 100%;
+  z-index: 120;
+  background-color: rgba(232, 232, 232, 0.9);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overlay-signup #msg-title {
+  font-size: 64px;
+  font-family: 'Open sans', sans-serif;
+}
+
+.overlay-signup .fas {
+  font-size: 64px;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=styles.css.map */

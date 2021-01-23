@@ -17,9 +17,15 @@
         <section class="region-tree">
             <%- include('includes/region-tree') %>
         </section>
-        <% } else if (title = 'Companías') {  %>
+        <% } else if (title == 'Companías') {  %>
         <section class="companies-table">
             <%- include('includes/companies-view') %>
+        </section>
+        <% } else if (title == 'Usuarios') { %>
+        <section class="users-table">
+            <%- include('includes/users-view') %>
+            <%- include('includes/signup_form')%>
+            <%- include('includes/overlay-signup')%>
         </section>
         <% } %>
     </main>
@@ -37,5 +43,8 @@
     <% } %>
     <% if (title == 'Contactos') { %>
     <script src="/js/contacts.js"></script>
+    <% } %>
+    <% if (title == 'Usuarios') { %>
+    <script src="/js/signup.js"></script>
     <% } %>
     <%- include('includes/footer') %>

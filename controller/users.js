@@ -99,12 +99,14 @@ exports.loginUsuario = (req, res, next) => {
 exports.verUsers = (req, res, next) => {
     User.findAll()
         .then(data => {
-            return res.status(200).json({
-                msg: 'GET Usuarios Ok!',
-                usuarios: data
+            console.log(JSON.stringify(data, null, 2));
+            res.status(200).render('home', {
+                title: 'Usuarios',
+                data: data,
+                status: 200
             });
         })
         .catch(err => {
-            return res.status(400).send('Error 404, no existen usuarios.');
+            res.status(400).send('Error 404, no existen usuarios.' + err);
         })
 }
