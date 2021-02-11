@@ -292,6 +292,12 @@
   margin: auto;
 }
 
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .overlay-signup {
   display: none;
   position: absolute;
@@ -325,5 +331,34 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.users-title {
+  display: block;
+  margin: auto;
+  font-family: "Open Sans", "sans-serif";
+  text-align: center;
+}
+
+.users-title .agregar-user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+  width: 100%;
+}
+
+.users-title .agregar-user-container .btn-primary {
+  margin-bottom: 2em;
 }
 /*# sourceMappingURL=styles.css.map */

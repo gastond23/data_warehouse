@@ -12,6 +12,21 @@ let SignUpData = {};
 let overlaySignUp = document.getElementsByClassName('overlay-signup');
 let msgTitleOk = document.getElementById('msg-title1');
 let msgTitleError = document.getElementById('msg-title2');
+let btnCreateUser = document.getElementsByClassName('btn-primary');
+let formSignUpOverlay = document.getElementsByClassName('main-signup');
+
+
+btnCreateUser[0].addEventListener('click', (e) => {
+    debugger;
+    e.preventDefault();
+    overlaySignUpForm();
+});
+
+btnCreateUser[1].addEventListener('click', (e) => {
+    debugger;
+    e.preventDefault();
+    overlaySignUpForm();
+});
 
 let statusForm;
 
@@ -119,4 +134,8 @@ function overlaySignUpMsg() {
     } else {
         overlaySignUp[0].classList.remove('active');
     }
+}
+
+function overlaySignUpForm() {
+    formSignUpOverlay[0].classList.add('active');
 }
