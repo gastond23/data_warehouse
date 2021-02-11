@@ -17,13 +17,11 @@ let formSignUpOverlay = document.getElementsByClassName('main-signup');
 
 
 btnCreateUser[0].addEventListener('click', (e) => {
-    debugger;
     e.preventDefault();
     overlaySignUpForm();
 });
 
 btnCreateUser[1].addEventListener('click', (e) => {
-    debugger;
     e.preventDefault();
     overlaySignUpForm();
 });
