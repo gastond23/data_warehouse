@@ -87,17 +87,14 @@ signUpBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let url;
     let urlencoded;
-    if (perfil.value == 'on') {
-        perfil.value = 1;
-    } else {
+
+    if (perfil.checked == false) {
         perfil.value = 0;
+    } else {
+        perfil.value = 1;
     }
     if (statusForm == true) {
-        if (!userId) {
-            url = "http://localhost:3000/usuario";
-        } else {
-            url = "http://localhost:3000/editar-usuario";
-        }
+        url = "http://localhost:3000/usuario";
         urlencoded = new URLSearchParams();
         urlencoded.append("name", nombre.value);
         urlencoded.append("lastname", apellido.value);
@@ -126,7 +123,6 @@ signUpBtn.addEventListener('click', (e) => {
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             SignUpData = data;
             if (SignUpData.status == 400) {
                 overlaySignUp[1].classList.add('active');
@@ -135,9 +131,7 @@ signUpBtn.addEventListener('click', (e) => {
                 overlaySignUp[0].classList.add('active');
                 msgTitleOk.innerText = SignUpData.msg;
             }
-            setTimeout(overlaySignUpMsg, 3000);
-            formSignUpOverlay[0].classList.remove('active');
-            location.reload();
+            setTimeout(overlaySignUpMsg, 2000);
         })
         .catch(err => {
             console.log(err);
@@ -160,4 +154,31 @@ function editUser(id) {
     formTitle.innerText = 'Editar Usuario';
     userId = id;
     overlaySignUpForm();
+}
+
+function deleteUser(id) {
+    userId = id;
+    let urlencoded = new URLSearchParams();
+    urlencoded.append('id', userId);
+    requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: urlencoded
+    };
+    fetch("http://localhost:3000/usuario", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            SignUpData = data;
+            if (SignUpData.status == 400) {
+                overlaySignUp[1].classList.add('active');
+                msgTitleError.innerText = SignUpData.msg;
+            } else {
+                overlaySignUp[0].classList.add('active');
+                msgTitleOk.innerText = SignUpData.msg;
+            }
+            setTimeout(overlaySignUpMsg, 2000);
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }

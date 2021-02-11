@@ -127,8 +127,8 @@ exports.editUser = (req, res, next) => {
             user.email = newEmail;
             user.admin = newAdmin;
             bcrypt.hash(newPassword, saltRounds, (err, hash) => {
-                    user.password = hash;
-                })
+                user.password = hash;
+            })
             user.save();
             console.log(user);
             res.status(200).send({
@@ -140,6 +140,27 @@ exports.editUser = (req, res, next) => {
         .catch(err => {
             res.status(400).json({
                 msg: 'ID erróneo o inexistente',
+                data: err,
+                status: 400
+            })
+        })
+}
+
+exports.deleteUser = (req, res, next) => {
+    const id = req.body.id;
+    User.findByPk(id)
+        .then(user => {
+            console.log(user);
+            user.destroy();
+            res.status(200).json({
+                msg: 'Usuario eliminado',
+                data: user,
+                status: 200
+            })
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID usuario inexistente o erróneo.',
                 data: err,
                 status: 400
             })

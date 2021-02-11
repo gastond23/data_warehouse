@@ -82,6 +82,8 @@ router.delete('/companies', authController.userOk, companiesController.deleteCom
 
 router.post('/uploads', authController.userOk, authController.adminVerification, upload.single('img'), contactsController.postNewContact);
 
-router.put('/editar-usuario', authController.userOk, authController.adminVerification, userController.editUser);
+router.put('/usuario', authController.userOk, authController.adminVerification, userController.editUser);
+
+router.delete('/usuario', authController.userOk, authController.adminVerification, userController.deleteUser);
 
 module.exports = router;
