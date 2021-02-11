@@ -131,7 +131,8 @@ signUpBtn.addEventListener('click', (e) => {
                 overlaySignUp[0].classList.add('active');
                 msgTitleOk.innerText = SignUpData.msg;
             }
-            setTimeout(overlaySignUpMsg, 2000);
+            setTimeout(overlaySignUpMsg, 4000);
+            setTimeout(refreshWindow, 2000);
         })
         .catch(err => {
             console.log(err);
@@ -176,9 +177,14 @@ function deleteUser(id) {
                 overlaySignUp[0].classList.add('active');
                 msgTitleOk.innerText = SignUpData.msg;
             }
-            setTimeout(overlaySignUpMsg, 2000);
+            setTimeout(overlaySignUpMsg, 4000);
+            setTimeout(refreshWindow, 2000);
         })
         .catch(err => {
             console.log(err);
         })
+}
+
+function refreshWindow() {
+    location.reload();
 }
