@@ -27,8 +27,8 @@
             <td class="align-middle"><%= users.email %></td>
             <td class="align-middle"><%= users.admin %></td>
             <td class="align-middle">
-                <button type="button" class="btn btn-primary">Editar</button>
-                <button type="button" class="btn btn-danger">Borrar</button>
+                <button type="button" value="<%= users.id %>" class="btn btn-primary" onclick="editUser(value)">Editar</button>
+                <button type="button" value="<%= users.id %>" class="btn btn-danger" onclick="deleteUser(value)">Borrar</button>
             </td>
         </tr>
         <% }; %>

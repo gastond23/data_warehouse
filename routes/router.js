@@ -80,6 +80,8 @@ router.put('/companies', authController.userOk, companiesController.editCompany)
 
 router.delete('/companies', authController.userOk, companiesController.deleteCompany);
 
-router.post('/uploads', authController.userOk, authController.adminVerification, upload.single('img'), contactsController.postNewContact)
+router.post('/uploads', authController.userOk, authController.adminVerification, upload.single('img'), contactsController.postNewContact);
+
+router.put('/editar-usuario', authController.userOk, authController.adminVerification, userController.editUser);
 
 module.exports = router;

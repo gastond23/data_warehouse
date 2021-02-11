@@ -14,10 +14,13 @@ let msgTitleOk = document.getElementById('msg-title1');
 let msgTitleError = document.getElementById('msg-title2');
 let btnCreateUser = document.getElementsByClassName('btn-outline-secondary');
 let formSignUpOverlay = document.getElementsByClassName('main-signup');
+let formTitle = document.getElementById('form-title');
+let userId;
 
 
 btnCreateUser[0].addEventListener('click', (e) => {
     e.preventDefault();
+    formTitle.innerText = 'Crear Usuario';
     overlaySignUpForm();
 });
 
@@ -90,22 +93,40 @@ signUpBtn.addEventListener('click', (e) => {
         perfil.value = 0;
     }
     if (statusForm == true) {
-        url = "http://localhost:3000/usuario";
+        if (!userId) {
+            url = "http://localhost:3000/usuario";
+        } else {
+            url = "http://localhost:3000/editar-usuario";
+        }
         urlencoded = new URLSearchParams();
         urlencoded.append("name", nombre.value);
         urlencoded.append("lastname", apellido.value);
         urlencoded.append("email", email.value);
         urlencoded.append("perfil", perfil.value);
         urlencoded.append("password", passTwo.value);
+        if (userId > 0) {
+            urlencoded.append("id", userId);
+        }
     }
-    let requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded
+
+    let requestOptions;
+    if (!userId) {
+        requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded
+        }
+    } else {
+        requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: urlencoded
+        }
     }
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             SignUpData = data;
             if (SignUpData.status == 400) {
                 overlaySignUp[1].classList.add('active');
@@ -115,6 +136,8 @@ signUpBtn.addEventListener('click', (e) => {
                 msgTitleOk.innerText = SignUpData.msg;
             }
             setTimeout(overlaySignUpMsg, 3000);
+            formSignUpOverlay[0].classList.remove('active');
+            location.reload();
         })
         .catch(err => {
             console.log(err);
@@ -131,4 +154,10 @@ function overlaySignUpMsg() {
 
 function overlaySignUpForm() {
     formSignUpOverlay[0].classList.add('active');
+}
+
+function editUser(id) {
+    formTitle.innerText = 'Editar Usuario';
+    userId = id;
+    overlaySignUpForm();
 }

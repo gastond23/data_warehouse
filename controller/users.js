@@ -110,3 +110,38 @@ exports.verUsers = (req, res, next) => {
             res.status(400).send('Error 404, no existen usuarios.' + err);
         })
 }
+
+exports.editUser = (req, res, next) => {
+    const id = req.body.id;
+    const newName = req.body.name;
+    const newLastName = req.body.lastname;
+    const newEmail = req.body.email;
+    const newAdmin = req.body.perfil;
+    const newPassword = req.body.password;
+    const saltRounds = 12;
+    User.findByPk(id)
+        .then(user => {
+            console.log(user);
+            user.name = newName;
+            user.lastname = newLastName;
+            user.email = newEmail;
+            user.admin = newAdmin;
+            bcrypt.hash(newPassword, saltRounds, (err, hash) => {
+                    user.password = hash;
+                })
+            user.save();
+            console.log(user);
+            res.status(200).send({
+                msg: 'Usuario actualizado!',
+                user: user,
+                status: 200
+            });
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID erróneo o inexistente',
+                data: err,
+                status: 400
+            })
+        })
+}

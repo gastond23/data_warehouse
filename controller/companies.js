@@ -105,14 +105,14 @@ exports.editCompany = (req, body, next) => {
             data.cityId = cityId;
             data.save();
             res.status(200).json({
-                mag: 'Companía actualizada',
+                msg: 'Companía actualizada',
                 data: data,
                 status: 200
             })
         })
         .catch(err => {
             res.status(400).json({
-                mag: 'ID erróneo o compania inexistente',
+                msg: 'ID erróneo o compania inexistente',
                 data: err,
                 status: 400
             })
