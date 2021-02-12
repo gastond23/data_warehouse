@@ -86,4 +86,6 @@ router.put('/usuario', authController.userOk, authController.adminVerification, 
 
 router.delete('/usuario', authController.userOk, authController.adminVerification, userController.deleteUser);
 
+router.post('/search-contacto', authController.userOk, contactsController.busquedaContactos);
+
 module.exports = router;

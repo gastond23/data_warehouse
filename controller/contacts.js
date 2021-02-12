@@ -1,4 +1,6 @@
 const Contact = require('../models/contact');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 exports.postNewContact = (req, res, next) => {
     console.log(req.file);
@@ -219,4 +221,41 @@ exports.contactCreateForm = (req, res, next) => {
         title: 'Crear Contacto',
         msg: 'Form Create Contact'
     })
+}
+
+exports.busquedaContactos = (req, res, next) => {
+    const search = req.body.search;
+    let busqueda = [];
+    busqueda.push(search)
+    Contact.findAll({
+            where: {
+                [Op.or]: [{
+                    name: busqueda
+                }, {
+                    lastname: busqueda
+                }]
+            },
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(contacts => {
+            console.log(JSON.stringify(contacts, null, 2));
+            res.status(200).render('home', {
+                title: 'Contactos',
+                msg: 'Contactos',
+                data: contacts,
+                status: 200
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).render('home', {
+                title: 'Contactos',
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err,
+                status: 400
+            });
+        })
 }
