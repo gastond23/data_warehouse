@@ -32,13 +32,13 @@ router.get('/usuarios', authController.userOk, authController.adminVerification,
 
 router.get('/contactos', authController.userOk, contactsController.getAllContacts);
 
-router.post('/contactos', authController.userOk, authController.adminVerification, contactsController.postNewContact);
+router.post('/contactos', authController.userOk, contactsController.postNewContact);
 
 router.get('/contactos', authController.userOk, contactsController.getContact);
 
-router.post('/contactos', authController.userOk, authController.adminVerification, contactsController.updateContact);
+router.post('/contactos', authController.userOk,  contactsController.updateContact);
 
-router.delete('/contactos', authController.userOk, authController.adminVerification, contactsController.deleteContact);
+router.delete('/contactos', authController.userOk, contactsController.deleteContact);
 
 router.get('/contactos', authController.userOk, contactsController.getContactsByRegion);
 
@@ -80,7 +80,9 @@ router.put('/companies', authController.userOk, companiesController.editCompany)
 
 router.delete('/companies', authController.userOk, companiesController.deleteCompany);
 
-router.post('/uploads', authController.userOk, authController.adminVerification, upload.single('img'), contactsController.postNewContact);
+router.post('/editar-contacto', authController.userOk, upload.single('img'), contactsController.updateContact);
+
+router.post('/uploads', authController.userOk, upload.single('img'), contactsController.postNewContact);
 
 router.put('/usuario', authController.userOk, authController.adminVerification, userController.editUser);
 

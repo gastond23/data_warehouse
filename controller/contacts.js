@@ -88,26 +88,38 @@ exports.getContact = (req, res, next) => {
 }
 
 exports.updateContact = (req, res, next) => {
+    console.log(req.file);
+    let newImg;
+    if (req.file == undefined) {
+        newImg = 'avatar.jpg';
+    } else {
+        newImg = req.file.filename;
+    }
+    console.log(req.body.id);
     const contactId = req.body.id;
     const newName = req.body.name;
+    const newLastname = req.body.lastname;
     const newEmail = req.body.email;
     const newPhone = req.body.phone;
-    const newImg = req.body.img;
-    const newCompany = parseInt(req.body.companyId);
-    const newCity = parseInt(req.body.cityId);
+    const newAdress = req.body.adress;
+    const newCompany = req.body.companyId;
+    const newCity = req.body.cityId;
+    const newPosition = req.body.position;
+    const newInterest = req.body.interest;
     Contact.findByPk(contactId)
         .then(contact => {
             contact.name = newName;
+            contact.lastname = newLastname;
             contact.email = newEmail;
             contact.phone = newPhone;
             contact.img = newImg;
+            contact.adress = newAdress;
             contact.companyId = newCompany;
             contact.cityId = newCity;
+            contact.position = newPosition;
+            contact.interest = newInterest;
             contact.save();
-            res.status(200).json({
-                msg: 'Datos Actualizados',
-                data: contact
-            });
+            res.status(200).redirect('http://localhost:3000/contactos');
         })
         .catch(err => {
             res.status(400).json({
@@ -224,16 +236,25 @@ exports.contactCreateForm = (req, res, next) => {
 }
 
 exports.busquedaContactos = (req, res, next) => {
-    const search = req.body.search;
-    let busqueda = [];
-    busqueda.push(search)
+    const busqueda = req.body.search;
     Contact.findAll({
             where: {
                 [Op.or]: [{
-                    name: busqueda
-                }, {
-                    lastname: busqueda
-                }]
+                        name: busqueda
+                    },
+                    {
+                        lastname: busqueda
+                    },
+                    {
+                        email: busqueda
+                    },
+                    {
+                        position: busqueda
+                    },
+                    {
+                        id: busqueda
+                    }
+                ]
             },
             include: {
                 all: true,

@@ -72,6 +72,27 @@
   font-family: "Open Sans", "sans-serif";
 }
 
+.form-contenedor {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: rgba(232, 232, 232, 0.9);
+  width: 100%;
+  height: 100vh;
+  font-family: "Open Sans", "sans-serif";
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 #table {
   width: 100%;
   font-family: "Open Sans", "sans-serif";
