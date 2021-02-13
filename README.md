@@ -6,7 +6,7 @@ _Es una herramienta que permite a una compañia de Marketing administrar todos l
 
 _Clonar proyecto desde consola o descargar desde el repositorio:_
 
-⌨️ git clone https://github.com/gastond23/data_warehouse.git
+⌨️  git clone https://github.com/gastond23/data_warehouse.git
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
@@ -69,12 +69,4 @@ Usuario con permisos básicos:
 Usuario: user@mail.com
 
 Contraseña: admin1234
-```
-
-### ENDPOINTS ⌨️
-
-_Operaciones CRUD de acuerdo a los siguientes endpoints:_
-
-```
-Da un ejemplo
 ```
