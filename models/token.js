@@ -1,10 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-const dotenv = require('dotenv');
+const { config } = require('../config/config');
 
-dotenv.config();
-
-const firma = process.env.JWT_KEY;
+const firma = config.secret_key;
 
 module.exports = {
     jwt,

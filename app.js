@@ -20,7 +20,9 @@ const cookieParser = require('cookie-parser');
 
 const sequelize = require('./data/database');
 
-const dotenv = require('dotenv');
+const {
+    config
+} = require('./config/config');
 
 require('./data/associatons');
 
@@ -30,7 +32,6 @@ const router = require('./routes/router');
 
 //Setear app y configuraciones
 
-dotenv.config();
 
 app.use(express.static('public'));
 
@@ -56,8 +57,8 @@ sequelize
     //.sync({ force: true })
     .sync()
     .then(result => {
-        app.listen(process.env.APP_PORT, () => {
-            console.log('Server initializated on port: ' + process.env.APP_PORT);
+        app.listen(config.app_port, () => {
+            console.log('Server initializated on port: ' + config.app_port);
         })
     })
     .catch(err => {
