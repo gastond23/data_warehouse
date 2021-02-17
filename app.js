@@ -54,7 +54,6 @@ app.use(router);
 //Iniciando servidor esperando la configuración o inico de la base de datos
 
 sequelize
-    //.sync({ force: true })
     .sync()
     .then(result => {
         app.listen(config.app_port, () => {
