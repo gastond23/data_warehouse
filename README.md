@@ -8,28 +8,29 @@ _Clonar proyecto desde consola o descargar desde el repositorio:_
 
 ⌨️  git clone https://github.com/gastond23/data_warehouse.git
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
 ### Dependencias 📋
 
 _En este proyecto se utilizaron las siguientes dependencias:_
 
-- [express]
-- [sequelize]
-- [body-parser]
-- [cors]
-- [dotenv]
-- [mysql2]
-- [cookie-parser]
-- [ejs]
-- [ejs-lint]
-- [jsonwebtoken]
-- [multer]
-- [bcrypt]
-
-_Dependencias para desarrollo_
-
-- [nodemon]
+```
+"dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "ejs-lint": "^1.1.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+```
 
 ### Instalación 🔧
 
