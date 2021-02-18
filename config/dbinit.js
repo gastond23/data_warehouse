@@ -248,10 +248,10 @@ sequelize
         cities.forEach(cities => City.create(cities));
     })
     .then(() => {
-        setTimeout(crearContactos, 2000);
+        setTimeout(crearCyC, 2000);
     })
 
-function crearContactos() {
+function crearCyC() {
     sequelize
         .sync({
             force: false
