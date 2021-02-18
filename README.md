@@ -66,8 +66,7 @@ DB_DIALECT='mysql'
 JWT_KEY='secreto_SECRETO'
 ```
 
-
-_Una vez personalizado la configuración de conexión de la DB ejecutar el siguiente comando para inicializar la base de datos con los datos previos para poder loguear y ejecutar pruebas:_
+_Una vez establecidas las configuraciones para la conexión de la DB crear una DB con phpMyAdmin o MySQLWorkbench con el nombre indicacod en la configuración **data_warehouse**, una vez creada la DB ejecutar el siguiente comando:_
 
 ```
 ⌨️ npm restart
