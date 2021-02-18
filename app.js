@@ -55,7 +55,7 @@ app.use(router);
 
 sequelize
     .sync()
-    .then(result => {
+    .then(() => {
         app.listen(config.app_port, () => {
             console.log('Server initializated on port: ' + config.app_port);
         })

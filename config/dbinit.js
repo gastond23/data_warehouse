@@ -5,8 +5,13 @@ const Region = require('../models/region');
 const Country = require('../models/country');
 const City = require('../models/city');
 const Company = require('../models/company');
+require('../data/associatons');
+const bcrypt = require('bcryptjs');
+const password = bcrypt.hashSync('admin1234', 12);
+
 
 const contacts = [{
+        id: 1,
         name: 'Carlos',
         lastname: 'Perez',
         email: 'cprez@mail.com',
@@ -20,6 +25,7 @@ const contacts = [{
         cityId: 1,
     },
     {
+        id: 2,
         name: 'Marcelo',
         lastname: 'Gonzalez',
         email: 'mgonzalez@mail.com',
@@ -35,78 +41,96 @@ const contacts = [{
 ];
 
 const users = [{
+        id: 1,
         name: 'Admin',
         lastname: 'Admin',
         email: 'admin@mail.com',
         admin: 1,
-        password: 'admin1234'
+        password: password
     },
     {
+        id: 2,
         name: 'User',
         lastname: 'user',
         email: 'user@mail.com',
         admin: 0,
-        password: 'user1234'
+        password: password
     }
 ];
 
 const regions = [{
+        id: 1,
         name: 'Sudamérica'
     },
     {
+        id: 2,
         name: 'Norteamérica'
     },
     {
+        id: 3,
         name: 'Centroamérica'
     },
     {
+        id: 4,
         name: 'Europa'
     },
     {
+        id: 5,
         name: 'Asia'
     },
     {
+        id: 6,
         name: 'Oceanía'
     }
 ];
 
 const countries = [{
+        id: 1,
         name: 'Estados Unidos',
         regionId: 2
     },
     {
+        id: 2,
         name: 'Argentina',
         regionId: 1
     },
     {
+        id: 3,
         name: 'Canada',
         regionId: 2
     },
     {
+        id: 4,
         name: 'España',
         regionId: 4
     },
     {
+        id: 5,
         name: 'Australia',
         regionId: 6
     },
     {
+        id: 6,
         name: 'Costa Rica',
-        regionId: 2
+        regionId: 3
     },
     {
+        id: 7,
         name: 'Panamá',
-        regionId: 2
+        regionId: 3
     },
     {
+        id: 8,
         name: 'China',
         regionId: 5
     },
     {
+        id: 9,
         name: 'Francia',
         regionId: 4
     },
     {
+        id: 10,
         name: 'Reino Unido',
         regionId: 4
     }
@@ -114,72 +138,89 @@ const countries = [{
 
 
 const cities = [{
+        id: 1,
         name: 'Miami',
         countryId: 1
     },
     {
+        id: 2,
         name: 'New York',
         countryId: 1
     },
     {
+        id: 3,
         name: 'Buenos Aires',
         countryId: 2
     },
     {
+        id: 4,
         name: 'Neuquén',
         countryId: 2
     },
     {
+        id: 5,
         name: 'Toronto',
         countryId: 3
     },
     {
+        id: 7,
         name: 'Montreal',
         countryId: 3
     },
     {
+        id: 8,
         name: 'Barcelona',
         countryId: 4
     },
     {
+        id: 9,
         name: 'Madrid',
         countryId: 4
     },
     {
+        id: 10,
         name: 'Sidney',
         countryId: 5
     },
     {
+        id: 11,
         name: 'Melbourne',
         countryId: 5
     },
     {
+        id: 12,
         name: 'San José',
         countryId: 6
     },
     {
+        id: 13,
         name: 'Panamá',
         countryId: 7
     },
     {
+        id: 14,
         name: 'Pekín',
         countryId: 8
     },
     {
+        id: 15,
         name: 'París',
         countryId: 9
     },
     {
+        id: 16,
         name: 'Marsella',
         countryId: 9
     },
     {
+        id: 17,
         name: 'Londres',
         countryId: 10
     }
 ];
 
 const companies = [{
+    id: 1,
     name: 'YPF',
     adress: 'Machaca Güemes 515',
     email: 'contacto@ypf.com',
@@ -195,6 +236,9 @@ sequelize
         console.log('Database connected');
     })
     .then(() => {
+        users.forEach(users => User.create(users));
+    })
+    .then(() => {
         regions.forEach(regions => Region.create(regions));
     })
     .then(() => {
@@ -204,11 +248,18 @@ sequelize
         cities.forEach(cities => City.create(cities));
     })
     .then(() => {
-        companies.forEach(companies => Company.create(companies));
+        setTimeout(crearContactos, 2000);
     })
-    .then(() => {
-        contacts.forEach(contacts => Contact.create(contacts));
-    })
-    .then(() => {
-        users.forEach(users => User.create(users));
-    })
+
+function crearContactos() {
+    sequelize
+        .sync({
+            force: false
+        })
+        .then(() => {
+            companies.forEach(companies => Company.create(companies));
+        })
+        .then(() => {
+            contacts.forEach(contacts => Contact.create(contacts));
+        })
+}
