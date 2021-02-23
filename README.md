@@ -46,7 +46,7 @@ _Una vez descargado el repositorio procedemos a instalar las dependencias mencio
 
 _Configuración previa:_
 
-En el archivo _.env_ se encuentran los datos de configuración e inicialies de la base de datos, en caso de ser necesario una personalización modificar los parametros del archivo:
+En el archivo **.env_** se encuentran los datos de configuración e inicialies de la base de datos, en caso de ser necesario una personalización modificar los parametros del archivo:
 
 ```
 APP_PORT=3000
@@ -66,13 +66,13 @@ DB_DIALECT='mysql'
 JWT_KEY='secreto_SECRETO'
 ```
 
-_Una vez establecidas las configuraciones para la conexión de la DB crear una DB con phpMyAdmin o MySQLWorkbench con el nombre indicacod en la configuración **data_warehouse**, una vez creada la DB ejecutar el siguiente comando:_
+Una vez establecidas las configuraciones para la conexión de la DB crear una DB con phpMyAdmin o MySQLWorkbench con el nombre indicacod en la configuración **data_warehouse**, una vez creada la DB ejecutar el siguiente comando:
 
 ```
 ⌨️ npm restart
 ```
 
-Este comando creará la base de datos en caso de que no exista y añadirá los datos previos para poder trabajar en la aplicación.
+Este comando creará la conexión con la DB y añadirá los datos previos para poder trabajar en la aplicación.
 
 ## Iniciando Servidor ⚙️
 

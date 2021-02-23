@@ -1,4 +1,14 @@
 <div class="region-container">
+    <div class="control-container">
+        <h1>Regiónes / Países / Ciudades</h1>
+        <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="createRegion()">Agregar
+                Región</button>
+            <input id="region-name" type="text" class="form-control" placeholder=""
+                aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
+    </div>
+    
     <div id="jstree" class="tree-container">
         <% data.sort(function (a, b) {
             let textA = a.name;
@@ -38,14 +48,7 @@
             <% }; %>
         </ul>
     </div>
-    <div class="control-container">
-        <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="createRegion()">Agregar
-                Región</button>
-            <input id="region-name" type="text" class="form-control" placeholder=""
-                aria-label="Example text with button addon" aria-describedby="button-addon1">
-        </div>
-    </div>
+    
 </div>
 <div id="msg-popup" class="overlay-msg">
     <h2 id="msg-check" class="msg-title"></h2>
