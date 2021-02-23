@@ -341,15 +341,15 @@
 .users-table .users-title {
   font-family: "Open Sans", "sans-serif";
   text-align: center;
+  margin: 0.5em;
 }
 
 .users-table .agregate_user_container {
   height: 5vh;
-  width: 80%;
   display: block;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0.5em;
 }
 
 .main-signup {
@@ -372,6 +372,33 @@
       -ms-flex-align: center;
           align-items: center;
   font-family: "Open Sans", "sans-serif";
+}
+
+.main-signup h2 {
+  position: absolute;
+  top: 3.5em;
+}
+
+.main-signup .close-btn {
+  display: block;
+  background: none;
+  border-style: none;
+  position: absolute;
+  top: 5em;
+  right: 10em;
+  text-decoration: none;
+}
+
+.main-signup .close-btn .fa-times {
+  display: block;
+  color: #007bff;
+  font-size: 25px;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.main-signup .close-btn:hover .fa-times {
+  color: #dc3545;
 }
 
 .main-signup .form-title {
