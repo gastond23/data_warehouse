@@ -1,7 +1,7 @@
 <div class="agregate-company-container">
     <h1>Companías</h1>
     <div class="btn-container">
-        <button id="agregate-btn" type="button" class="btn btn-secondary">Agregar</button>
+        <button id="agregate-btn" type="button" class="btn btn-outline-secondary">Agregar Companía</button>
     </div>
 </div>
 <table id="table" class="table table-striped table-sm table-bordered">
@@ -36,6 +36,7 @@
 
 <div class="overlay-form">
     <h2 id="form-title"></h2>
+    <a href="/companies" class="close-btn"><i class="fas fa-times"></i></a>
     <form class="signup-form">
         <div class="form-group">
             <label for="validationServer01">Nombre</label>
@@ -56,19 +57,19 @@
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Región</label>
             <select class="form-select" id="select-region">
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">País</label>
             <select class="form-select" id="select-country" disabled>
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Ciudad</label>
             <select class="form-select" id="select-city" disabled>
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
             </select>
         </div>
         <button class="btn btn-primary" id="agregate_company_btn"></button>
