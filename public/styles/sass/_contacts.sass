@@ -22,27 +22,98 @@
 .form-container
     position: absolute
     display: flex
+    flex-direction: column
     justify-content: center
     align-items: center
+    width: 100%
+    height: 100vh
     top: 0
     left: 0
     right: 0
     bottom: 0
     background-color: rgba(232, 232, 232, 0.9)
+    .close-btn
+        display: block
+        background: none
+        border-style: none
+        position: absolute
+        top: 5em
+        right: 10em
+        text-decoration: none
+        .fa-times
+            display: block
+            color: #007bff
+            font-size: 25px
+            transition: all 0.2s ease-in
+    .close-btn:hover
+        .fa-times
+            color: #dc3545
     .contact-form
         font-family: $font-openSans
+        width: 100%
+        height: 80%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+        .grupo-inputs
+            display: flex
+            width: 50%
+            justify-content: space-between
+            align-items: center
+        .region-select-container
+            display: flex
+            justify-content: space-between
+            .input-group
+                margin: 1em
 
 .form-contenedor
-    display: none
-    justify-content: center
     position: absolute
-    z-index: 10
-    top: 0
-    left: 0
-    background-color:  rgba(232, 232, 232, 0.9)
+    display: none
+    flex-direction: column
+    justify-content: center
+    align-items: center
     width: 100%
     height: 100vh
-    font-family: $font-openSans
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(232, 232, 232, 0.9)
+    .close-btn
+        display: block
+        background: none
+        border-style: none
+        position: absolute
+        top: 5em
+        right: 10em
+        text-decoration: none
+        .fa-times
+            display: block
+            color: #007bff
+            font-size: 25px
+            transition: all 0.2s ease-in
+    .close-btn:hover
+        .fa-times
+            color: #dc3545
+    .contact-form
+        font-family: $font-openSans
+        width: 100%
+        height: 80%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+        .grupo-input
+            display: flex
+            width: 50%
+            justify-content: space-between
+            align-items: center
+        .region-select-container
+            display: flex
+            justify-content: space-between
+            .input-group
+                margin: 1em
 
 .active
     display: flex
