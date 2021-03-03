@@ -14,6 +14,8 @@ const companiesController = require('../controller/companies');
 
 const upload = require('../middleware/uploads');
 
+const searcher = require('../middleware/searcher');
+
 //Router views
 
 router.get('/', (req, res) => {
@@ -36,7 +38,7 @@ router.post('/contactos', authController.userOk, contactsController.postNewConta
 
 router.get('/contactos', authController.userOk, contactsController.getContact);
 
-router.post('/contactos', authController.userOk,  contactsController.updateContact);
+router.post('/contactos', authController.userOk, contactsController.updateContact);
 
 router.delete('/contactos', authController.userOk, contactsController.deleteContact);
 
@@ -88,6 +90,16 @@ router.put('/usuario', authController.userOk, authController.adminVerification, 
 
 router.delete('/usuario', authController.userOk, authController.adminVerification, userController.deleteUser);
 
-router.post('/search-contacto', authController.userOk, contactsController.busquedaContactos);
+router.post('/search-contacto', authController.userOk, 
+searcher.busquedaNombre, 
+searcher.busquedaApellido, 
+searcher.busquedaMail, 
+searcher.busquedaPuesto, 
+searcher.busquedaInteres, 
+searcher.busquedaTelefono, 
+searcher.busquedaCompania, 
+searcher.busquedaRegión, 
+searcher.busquedaCountry, 
+searcher.busquedaCiudad);
 
 module.exports = router;

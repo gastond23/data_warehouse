@@ -17,6 +17,8 @@ User.hasMany(Contact);
 Contact.belongsTo(Company);
 Company.belongsTo(City);
 Contact.belongsTo(City);
+Contact.belongsTo(Country);
+Contact.belongsTo(Region);
 Country.hasMany(City);
 City.belongsTo(Country);
 Region.hasMany(Country);

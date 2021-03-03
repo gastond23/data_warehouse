@@ -19,6 +19,8 @@ exports.postNewContact = (req, res, next) => {
     const newCity = req.body.cityId;
     const newPosition = req.body.position;
     const newInterest = req.body.interest;
+    const newRegion = req.body.regionId;
+    const newCountry = req.body.countryId;
     req.user.createContact({
             name: newName,
             lastname: newLastname,
@@ -29,7 +31,9 @@ exports.postNewContact = (req, res, next) => {
             companyId: newCompany,
             cityId: newCity,
             position: newPosition,
-            interest: newInterest
+            interest: newInterest,
+            countryId: newCountry,
+            regionId: newRegion
         })
         .then(data => {
             res.status(200).redirect('http://localhost:3000/contactos')
@@ -106,6 +110,8 @@ exports.updateContact = (req, res, next) => {
     const newCity = req.body.cityId;
     const newPosition = req.body.position;
     const newInterest = req.body.interest;
+    const newRegion = req.body.regionId;
+    const newCountry = req.body.countryId;
     Contact.findByPk(contactId)
         .then(contact => {
             contact.name = newName;
@@ -118,6 +124,8 @@ exports.updateContact = (req, res, next) => {
             contact.cityId = newCity;
             contact.position = newPosition;
             contact.interest = newInterest;
+            contact.regionId = newRegion;
+            contact.countryId = newCountry;
             contact.save();
             res.status(200).redirect('http://localhost:3000/contactos');
         })
@@ -148,113 +156,10 @@ exports.deleteContact = (req, res, next) => {
 }
 
 exports.getContactsByRegion = (req, res, next) => {
-    const regionId = req.body.regionId;
+    const regionId = req.body.search;
     Contact.findAll({
             where: {
                 regionId: regionId
-            }
-        })
-        .then(data => {
-            res.status(200).json({
-                msg: 'Contactos por región',
-                data: data
-            })
-        })
-        .catch(err => {
-            res.status(400).json({
-                msg: 'ID erróneo o región inexistente',
-                error: err
-            });
-        })
-}
-
-exports.getContactsByCompany = (req, res, next) => {
-    const companyId = req.body.companyId;
-    Contact.findAll({
-            where: {
-                companyId: companyId
-            }
-        })
-        .then(data => {
-            res.status(200).json({
-                msg: 'Contactos por companía',
-                data: data
-            })
-        })
-        .catch(err => {
-            res.status(400).json('ID erróneo o compania inexistente.')
-        })
-}
-
-exports.getContactsByCity = (req, res, next) => {
-    const cityId = req.body.cityId;
-    Contact.findAll({
-            where: {
-                cityId: cityId
-            }
-        })
-        .then(data => {
-            res.status(200).json({
-                msg: 'Contactos por ciudad',
-                data: data
-            })
-        })
-        .catch(err => {
-            res.status(400).json({
-                msg: 'ID erróneo o ciudad inexistente',
-                error: err
-            });
-        })
-}
-
-exports.getContactsByCountry = (req, res, next) => {
-    const countryId = req.body.countryId;
-    Contact.findAll({
-            where: {
-                countryId: countryId
-            }
-        })
-        .then(data => {
-            res.status(200).json({
-                msg: 'Contactos por pais',
-                data: data
-            })
-        })
-        .catch(err => {
-            res.status(400).json({
-                msg: 'ID erróneo o pais inexistente',
-                error: err
-            });
-        })
-}
-
-exports.contactCreateForm = (req, res, next) => {
-    res.status(200).render('form-contact', {
-        title: 'Crear Contacto',
-        msg: 'Form Create Contact'
-    })
-}
-
-exports.busquedaContactos = (req, res, next) => {
-    const busqueda = req.body.search;
-    Contact.findAll({
-            where: {
-                [Op.or]: [{
-                        name: busqueda
-                    },
-                    {
-                        lastname: busqueda
-                    },
-                    {
-                        email: busqueda
-                    },
-                    {
-                        position: busqueda
-                    },
-                    {
-                        id: busqueda
-                    }
-                ]
             },
             include: {
                 all: true,
@@ -271,7 +176,6 @@ exports.busquedaContactos = (req, res, next) => {
             })
         })
         .catch(err => {
-            console.log(err);
             res.status(400).render('home', {
                 title: 'Contactos',
                 msg: 'Ocurrió un error, intente mas tarde.',
@@ -279,4 +183,101 @@ exports.busquedaContactos = (req, res, next) => {
                 status: 400
             });
         })
+}
+
+exports.getContactsByCompany = (req, res, next) => {
+    const companyId = req.body.search;
+    Contact.findAll({
+            where: {
+                companyId: companyId
+            },
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(contacts => {
+            console.log(JSON.stringify(contacts, null, 2));
+            res.status(200).render('home', {
+                title: 'Contactos',
+                msg: 'Contactos',
+                data: contacts,
+                status: 200
+            })
+        })
+        .catch(err => {
+            res.status(400).render('home', {
+                title: 'Contactos',
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err,
+                status: 400
+            });
+        })
+}
+
+exports.getContactsByCity = (req, res, next) => {
+    const cityId = req.body.search;
+    Contact.findAll({
+            where: {
+                cityId: cityId
+            },
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(contacts => {
+            console.log(JSON.stringify(contacts, null, 2));
+            res.status(200).render('home', {
+                title: 'Contactos',
+                msg: 'Contactos',
+                data: contacts,
+                status: 200
+            })
+        })
+        .catch(err => {
+            res.status(400).render('home', {
+                title: 'Contactos',
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err,
+                status: 400
+            });
+        })
+}
+
+exports.getContactsByCountry = (req, res, next) => {
+    const countryId = req.body.search;
+    Contact.findAll({
+            where: {
+                countryId: countryId
+            },
+            include: {
+                all: true,
+                nested: true
+            }
+        })
+        .then(contacts => {
+            console.log(JSON.stringify(contacts, null, 2));
+            res.status(200).render('home', {
+                title: 'Contactos',
+                msg: 'Contactos',
+                data: contacts,
+                status: 200
+            })
+        })
+        .catch(err => {
+            res.status(400).render('home', {
+                title: 'Contactos',
+                msg: 'Ocurrió un error, intente mas tarde.',
+                data: err,
+                status: 400
+            });
+        })
+}
+
+exports.contactCreateForm = (req, res, next) => {
+    res.status(200).render('form-contact', {
+        title: 'Crear Contacto',
+        msg: 'Form Create Contact'
+    })
 }

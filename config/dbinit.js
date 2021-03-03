@@ -23,6 +23,8 @@ const contacts = [{
         userId: 1,
         companyId: 1,
         cityId: 1,
+        countryId: 1,
+        regionId: 2
     },
     {
         id: 2,
@@ -37,6 +39,8 @@ const contacts = [{
         userId: 1,
         companyId: 1,
         cityId: 1,
+        countryId: 1,
+        regionId: 2
     }
 ];
 
