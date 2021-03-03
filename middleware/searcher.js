@@ -346,7 +346,12 @@ exports.busquedaCiudad = (req, res, next) => {
                         });
                     })
             } else {
-                next();
+                res.status(200).render('home', {
+                    title: 'Contactos',
+                    msg: 'Contactos',
+                    data: city,
+                    status: 200
+                })
             }
         })
         .catch(err => {
