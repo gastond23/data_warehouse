@@ -236,6 +236,44 @@
   display: flex;
 }
 
+.contador {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  font-family: "Open Sans", "sans-serif";
+  color: #007bff;
+  top: 10.2em;
+  left: 1em;
+  border: 1px #007bff solid;
+  height: 32px;
+  width: 80px;
+  border-radius: 5px 5px 0 0;
+  visibility: hidden;
+}
+
+.contador h6 {
+  margin: auto;
+  font-size: 12px;
+}
+
+.btn-cont {
+  position: absolute;
+  top: 8em;
+  right: 15em;
+  visibility: hidden;
+}
+
+.active-count {
+  visibility: visible;
+}
+
 #table {
   width: 100%;
   font-family: "Open Sans", "sans-serif";
