@@ -155,6 +155,29 @@ exports.deleteContact = (req, res, next) => {
         })
 }
 
+exports.deleteAllContacts = (req, res, next) => {
+    const id = req.body.ids;
+    const ids = id.split(',');
+    Contact.destroy({
+            where: {
+                id: ids
+            }
+        })
+        .then(data => {
+            res.status(200).json({
+                msg: 'Contactos eliminados',
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(400).json({
+                msg: 'ID erróneo o contacto inexistente',
+                error: err
+            });
+        })
+}
+
+
 exports.getContactsByRegion = (req, res, next) => {
     const regionId = req.body.search;
     Contact.findAll({

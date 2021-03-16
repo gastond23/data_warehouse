@@ -90,16 +90,18 @@ router.put('/usuario', authController.userOk, authController.adminVerification, 
 
 router.delete('/usuario', authController.userOk, authController.adminVerification, userController.deleteUser);
 
-router.post('/search-contacto', authController.userOk, 
-searcher.busquedaNombre, 
-searcher.busquedaApellido, 
-searcher.busquedaMail, 
-searcher.busquedaPuesto, 
-searcher.busquedaInteres, 
-searcher.busquedaTelefono, 
-searcher.busquedaCompania, 
-searcher.busquedaRegión, 
-searcher.busquedaCountry, 
-searcher.busquedaCiudad);
+router.delete('/delete-contactos', authController.userOk, contactsController.deleteAllContacts);
+
+router.post('/search-contacto', authController.userOk,
+    searcher.busquedaNombre,
+    searcher.busquedaApellido,
+    searcher.busquedaMail,
+    searcher.busquedaPuesto,
+    searcher.busquedaInteres,
+    searcher.busquedaTelefono,
+    searcher.busquedaCompania,
+    searcher.busquedaRegión,
+    searcher.busquedaCountry,
+    searcher.busquedaCiudad);
 
 module.exports = router;

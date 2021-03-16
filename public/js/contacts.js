@@ -16,6 +16,7 @@ let uniqueArray;
 let contador = document.getElementById('contact-count');
 let countContainer = document.getElementsByClassName('contador');
 let btnContainer = document.getElementsByClassName('btn-cont');
+let btnDeleteAll = document.getElementById('delete-btn-group');
 
 
 document.querySelectorAll('.form-check-input').forEach(item => {
@@ -71,10 +72,12 @@ function deleteContact(id) {
         })
 }
 
-tableBody.addEventListener('click', (e) => {
-    let valueId = e.target.title;
-    checkBoxValues(valueId);
-})
+if (tableBody != null) {
+    tableBody.addEventListener('click', (e) => {
+        let valueId = e.target.title;
+        checkBoxValues(valueId);
+    })
+}
 
 function checkBoxValues(value) {
     let valueId = value;
@@ -121,31 +124,56 @@ function checkStatusAll() {
     }
     contador.innerHTML = `Contactos: ${arrayId.length}`;
 }
+if (checkBoxAll != null) {
+    checkBoxAll.addEventListener('click', () => {
+        arrayId = [];
+        if (checkBoxAll.checked) {
+            for (let i = 1; i < checkBoxOne.length; i++) {
+                checkBoxOne[i].checked = true;
+                countContainer[0].classList.add('active-count');
+                btnContainer[0].classList.add('active-count');
+                let uniqueValue = checkBoxOne[i].value;
+                arrayId.push(uniqueValue);
+            }
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].classList.add('table-primary');
+            }
+        } else {
+            for (let i = 1; i < checkBoxOne.length; i++) {
+                checkBoxOne[i].checked = false;
+                countContainer[0].classList.remove('active-count');
+                btnContainer[0].classList.remove('active-count');
+                arrayId = [];
+            }
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].classList.remove('table-primary');
+            }
+        }
+        checkBoxAll.value = arrayId;
+        contador.innerHTML = `Contactos: ${arrayId.length}`;
+    })
+}
 
-checkBoxAll.addEventListener('click', () => {
-    arrayId = [];
-    if (checkBoxAll.checked) {
-        for (let i = 1; i < checkBoxOne.length; i++) {
-            checkBoxOne[i].checked = true;
-            countContainer[0].classList.add('active-count');
-            btnContainer[0].classList.add('active-count');
-            let uniqueValue = checkBoxOne[i].value;
-            arrayId.push(uniqueValue);
-        }
-        for (let i = 0; i < rows.length; i++) {
-            rows[i].classList.add('table-primary');
-        }
-    } else {
-        for (let i = 1; i < checkBoxOne.length; i++) {
-            checkBoxOne[i].checked = false;
-            countContainer[0].classList.remove('active-count');
-            btnContainer[0].classList.remove('active-count');
-            arrayId = [];
-        }
-        for (let i = 0; i < rows.length; i++) {
-            rows[i].classList.remove('table-primary');
-        }
-    }
-    checkBoxAll.value = arrayId;
-    contador.innerHTML = `Contactos: ${arrayId.length}`;
-})
+if (btnDeleteAll != null) {
+    btnDeleteAll.addEventListener('click', () => {
+        let valueIds = checkBoxAll.value;
+        let ids = valueIds.split(',');
+        console.log(ids);
+        let urlencoded = new URLSearchParams();
+        urlencoded.append('ids', ids);
+        requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            body: urlencoded
+        };
+        fetch("http://localhost:3000/delete-contactos", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                location.reload();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
+}
