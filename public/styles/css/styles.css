@@ -274,6 +274,20 @@
   visibility: visible;
 }
 
+.arrows {
+  width: 35px;
+  cursor: pointer;
+}
+
+.rows-content {
+  cursor: pointer;
+}
+
+.order-btn {
+  border: none;
+  background: none;
+}
+
 #table {
   width: 100%;
   font-family: "Open Sans", "sans-serif";

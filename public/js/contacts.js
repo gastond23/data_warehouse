@@ -17,6 +17,18 @@ let contador = document.getElementById('contact-count');
 let countContainer = document.getElementsByClassName('contador');
 let btnContainer = document.getElementsByClassName('btn-cont');
 let btnDeleteAll = document.getElementById('delete-btn-group');
+let inputNameDirection = document.getElementById('name-direction');
+let inputEmailDirection = document.getElementById('email-direction');
+let inputPositionDirection = document.getElementById('position-direction');
+let inputCompanyDirection = document.getElementById('company-direction');
+let inputInterestDirection = document.getElementById('interest-direction');
+let inputCountryDirection = document.getElementById('country-direction');
+let btnOrderName = document.getElementById('order-name');
+let btnOrderEmail = document.getElementById('order-email');
+let btnOrderPosition = document.getElementById('order-position');
+let btnOrderCompany = document.getElementById('order-company');
+let btnOrderInterest = document.getElementById('order-interest');
+let btnOrderCountry = document.getElementById('order-country');
 
 
 document.querySelectorAll('.form-check-input').forEach(item => {
@@ -175,5 +187,83 @@ if (btnDeleteAll != null) {
             .catch(err => {
                 console.log(err);
             })
+    })
+}
+
+if (btnOrderName != null) {
+    let order = localStorage.getItem('order-name');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-name', 'ASC');
+    } else {
+        localStorage.setItem('order-name', 'DESC');
+    }
+    btnOrderName.addEventListener('click', () => {
+        order = localStorage.getItem('order-name');
+        inputNameDirection.value = order;
+    })
+}
+
+if (btnOrderEmail != null) {
+    let order = localStorage.getItem('order-email');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-email', 'ASC');
+    } else {
+        localStorage.setItem('order-email', 'DESC');
+    }
+    btnOrderEmail.addEventListener('click', () => {
+        order = localStorage.getItem('order-email');
+        inputEmailDirection.value = order;
+    })
+}
+
+if (btnOrderPosition != null) {
+    let order = localStorage.getItem('order-position');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-position', 'ASC');
+    } else {
+        localStorage.setItem('order-position', 'DESC');
+    }
+    btnOrderPosition.addEventListener('click', () => {
+        order = localStorage.getItem('order-position');
+        inputPositionDirection.value = order;
+    })
+}
+
+if (btnOrderCompany != null) {
+    let order = localStorage.getItem('order-company');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-company', 'ASC');
+    } else {
+        localStorage.setItem('order-company', 'DESC');
+    }
+    btnOrderCompany.addEventListener('click', () => {
+        order = localStorage.getItem('order-company');
+        inputCompanyDirection.value = order;
+    })
+}
+
+if (btnOrderInterest != null) {
+    let order = localStorage.getItem('order-interest');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-interest', 'ASC');
+    } else {
+        localStorage.setItem('order-interest', 'DESC');
+    }
+    btnOrderInterest.addEventListener('click', () => {
+        order = localStorage.getItem('order-interest');
+        inputInterestDirection.value = order;
+    })
+}
+
+if (btnOrderCountry != null) {
+    let order = localStorage.getItem('order-country');
+    if (order == null || order == 'DESC') {
+        localStorage.setItem('order-country', 'ASC');
+    } else {
+        localStorage.setItem('order-country', 'DESC');
+    }
+    btnOrderCountry.addEventListener('click', () => {
+        order = localStorage.getItem('order-country');
+        inputCountryDirection.value = order;
     })
 }

@@ -92,6 +92,8 @@ router.delete('/usuario', authController.userOk, authController.adminVerificatio
 
 router.delete('/delete-contactos', authController.userOk, contactsController.deleteAllContacts);
 
+router.post('/orden-contact', authController.userOk, contactsController.orderAscendente);
+
 router.post('/search-contacto', authController.userOk,
     searcher.busquedaNombre,
     searcher.busquedaApellido,
