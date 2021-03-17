@@ -34,7 +34,7 @@ if (linkLocation == '/') {
     navLink[0].classList.add('d-none');
 }
 
-if(admin == "0") {
+if (admin == "0") {
     navLink[3].classList.add('d-none');
 }
 
@@ -43,4 +43,9 @@ for (let i = 0; i <= linkSignUpActive.length; i++) {
     if (linkSignUpActive[i] == linkLocation) {
         navLink[i].classList.add('active');
     }
+}
+
+if (linkLocation == '/orden-contact' || linkLocation == '/search-contacto') {
+    navLink[0].classList.add('d-none');
+    navLink[1].classList.add('active');
 }
